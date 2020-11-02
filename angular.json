@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "uang-apps"
+    }
+  },
+  "defaultProject": "uang-apps",
+  "cli": {
+    "analytics": false
+  }
 }
