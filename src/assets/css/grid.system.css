@@ -3,9 +3,7 @@ Custom Grid CSS Layout DAZELPRO
 Build       : 03/09/2020
 Last Edited : 17/09/2020
 */
-.bg {
-    background-color: aqua;
-}
+
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
