@@ -1,4 +1,4 @@
-# UangApps
+# Web App Manajemen Keuangan Pribadi
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.2.
 
