@@ -8,6 +8,6 @@
     height: 300px;
     background: #2c3e50;
     z-index: -10;
-    transform: skewY(7deg);
+    transform: skewY(8deg);
     transform-origin: top right;
 }
