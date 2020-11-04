@@ -9,13 +9,15 @@ import { ToolbarPageComponent } from './layout/toolbar-page/toolbar-page.compone
 import { RoutingModule } from './routing.module';
 import { AuthModule } from './auth/auth.module';
 import { HomeModule } from './page/home/home.module';
+import { BottomMenuComponent } from './layout/bottom-menu/bottom-menu.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         BlankComponent,
         ToolbarMainComponent,
-        ToolbarPageComponent
+        ToolbarPageComponent,
+        BottomMenuComponent
     ],
     imports: [
         BrowserModule,
