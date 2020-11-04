@@ -16,7 +16,17 @@ const routes: Routes = [
         ]
     },
     {
-        path: 'dashboard',
+        path: 'home',
+        component: ToolbarMainComponent,
+        children: [
+            {
+                path: '',
+                loadChildren: './page/home/home.module#HomeModule'
+            }
+        ]
+    },
+    {
+        path: 'profile',
         component: ToolbarMainComponent,
         children: [
             {
@@ -25,7 +35,7 @@ const routes: Routes = [
             }
         ]
     },
-    { path: '**',   redirectTo: 'login' }
+    { path: '**',   redirectTo: 'home' }
 
 ];
 

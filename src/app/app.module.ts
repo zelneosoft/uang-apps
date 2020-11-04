@@ -8,6 +8,7 @@ import { ToolbarMainComponent } from './layout/toolbar-main/toolbar-main.compone
 import { ToolbarPageComponent } from './layout/toolbar-page/toolbar-page.component';
 import { RoutingModule } from './routing.module';
 import { AuthModule } from './auth/auth.module';
+import { HomeModule } from './page/home/home.module';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { AuthModule } from './auth/auth.module';
         BrowserModule,
         MaterialModule,
         RoutingModule,
-        AuthModule
+        AuthModule,
+        HomeModule
     ],
     providers: [],
     bootstrap: [AppComponent]
