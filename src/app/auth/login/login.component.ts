@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ApiService } from 'src/app/service/api.service';
 
 @Component({
     selector: 'app-login',
@@ -12,10 +13,15 @@ export class LoginComponent implements OnInit {
     dataUser;
     @ViewChild('openDialogGoogle', {static: true }) loginElement: ElementRef;
     
-    constructor(private route: ActivatedRoute) { }
+    constructor(
+        private route: ActivatedRoute,
+        private rest: ApiService,
+        // public data: DataService
+        )
+    { }
 
     ngOnInit(): void {
-        // this.route.data.subscribe(v => console.log(v));
+        this.route.data.subscribe(v => console.log(v));
         this.googleSDK();
     }
 
@@ -60,7 +66,16 @@ export class LoginComponent implements OnInit {
     }
 
     async login() {
-        console.log(this.dataUser)
+        try {
+            await this.rest.auth_user(this.dataUser).subscribe(async (data) => {
+                if (data["success"]) {
+                    // localStorage.setItem('token', data['token']);
+                    console.log(data)
+                }
+            });
+        } catch (error) {
+            console.log(error);
+        }
     }
 
 }
