@@ -11,6 +11,9 @@ import { RoutingModule } from './routing.module';
 import { AuthModule } from './auth/auth.module';
 import { HomeModule } from './page/home/home.module';
 import { BottomMenuComponent } from './layout/bottom-menu/bottom-menu.component';
+import { AuthService } from './service/auth.service';
+import { ApiService } from './service/api.service';
+import { UserService } from './service/user.service';
 
 @NgModule({
     declarations: [
@@ -28,7 +31,11 @@ import { BottomMenuComponent } from './layout/bottom-menu/bottom-menu.component'
         HomeModule,
         HttpClientModule
     ],
-    providers: [],
+    providers: [
+        AuthService,
+        ApiService,
+        UserService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -68,12 +68,11 @@ export class LoginComponent implements OnInit {
     }
 
     async login() {
-        console.log(this.dataUser)
         try {
             await this.rest.auth_user(this.dataUser).subscribe(async (data) => {
                 if (data["success"]) {
                     localStorage.setItem('token', data['token']);
-                    // this.router.navigate(['/home']);
+                    this.router.navigate(['/home']);
                     this.data.getProfile();
                 }
             });

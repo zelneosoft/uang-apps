@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { BlankComponent } from './layout/blank/blank.component';
 import { ToolbarMainComponent } from './layout/toolbar-main/toolbar-main.component';
+import { AuthService } from './service/auth.service';
 
 const routes: Routes = [
     {
@@ -21,7 +22,8 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                loadChildren: './page/home/home.module#HomeModule'
+                loadChildren: './page/home/home.module#HomeModule',
+                canActivate: [AuthService]
             }
         ]
     },
