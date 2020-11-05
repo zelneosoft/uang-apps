@@ -35,11 +35,11 @@ const routes: Routes = [
             {
                 path: '',
                 loadChildren: './page/profile/profile.module#ProfileModule',
-                // canActivate: [AuthService]
+                canActivate: [AuthService]
             }
         ]
     },
-    { path: '**',   redirectTo: 'profile' }
+    { path: '**',   redirectTo: 'home' }
 
 ];
 

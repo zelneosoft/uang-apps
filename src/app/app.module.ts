@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
@@ -15,6 +16,8 @@ import { AuthService } from './service/auth.service';
 import { ApiService } from './service/api.service';
 import { UserService } from './service/user.service';
 import { ProfileModule } from './page/profile/profile.module';
+import { HttpConfigInterceptor } from './service/INTERCEPTOR';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
     declarations: [
@@ -22,10 +25,12 @@ import { ProfileModule } from './page/profile/profile.module';
         BlankComponent,
         ToolbarMainComponent,
         ToolbarPageComponent,
-        BottomMenuComponent
+        BottomMenuComponent,
+        ErrorComponent
     ],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         MaterialModule,
         HttpClientModule,
         RoutingModule,
@@ -36,7 +41,8 @@ import { ProfileModule } from './page/profile/profile.module';
     providers: [
         AuthService,
         ApiService,
-        UserService
+        UserService,
+        {provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true }
     ],
     bootstrap: [AppComponent]
 })
