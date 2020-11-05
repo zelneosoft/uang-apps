@@ -14,6 +14,7 @@ import { BottomMenuComponent } from './layout/bottom-menu/bottom-menu.component'
 import { AuthService } from './service/auth.service';
 import { ApiService } from './service/api.service';
 import { UserService } from './service/user.service';
+import { ProfileModule } from './page/profile/profile.module';
 
 @NgModule({
     declarations: [
@@ -26,10 +27,11 @@ import { UserService } from './service/user.service';
     imports: [
         BrowserModule,
         MaterialModule,
+        HttpClientModule,
         RoutingModule,
         AuthModule,
         HomeModule,
-        HttpClientModule
+        ProfileModule
     ],
     providers: [
         AuthService,

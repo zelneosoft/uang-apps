@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BlankComponent } from './layout/blank/blank.component';
 import { ToolbarMainComponent } from './layout/toolbar-main/toolbar-main.component';
 import { AuthService } from './service/auth.service';
+import { ToolbarPageComponent } from './layout/toolbar-page/toolbar-page.component';
 
 const routes: Routes = [
     {
@@ -29,15 +30,16 @@ const routes: Routes = [
     },
     {
         path: 'profile',
-        component: ToolbarMainComponent,
+        component: ToolbarPageComponent,
         children: [
             {
                 path: '',
-                loadChildren: './auth/auth.module#AuthModule'
+                loadChildren: './page/profile/profile.module#ProfileModule',
+                // canActivate: [AuthService]
             }
         ]
     },
-    { path: '**',   redirectTo: 'login' }
+    { path: '**',   redirectTo: 'profile' }
 
 ];
 
