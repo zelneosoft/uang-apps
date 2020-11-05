@@ -10,7 +10,7 @@ export class ApiService {
     constructor(private http: HttpClient) { }
 
     getHeaders() {
-        const token = localStorage.getItem('bilderbee');
+        const token = localStorage.getItem('token');
         return token ? new HttpHeaders().set('Authorization', token) : null;
     }
 
@@ -23,7 +23,7 @@ export class ApiService {
     }
 
     get_profile() {
-        return this.http.post(`${this.link_url()}/uangku-account`,{ headers: this.getHeaders() });
+        return this.http.get(`${this.link_url()}/uangku-account`,{ headers: this.getHeaders() });
     }
 
 }

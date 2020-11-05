@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
     selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private rest: ApiService,
-        // public data: DataService
+        public data: UserService,
+        private router : Router,
         )
     { }
 
@@ -66,11 +68,13 @@ export class LoginComponent implements OnInit {
     }
 
     async login() {
+        console.log(this.dataUser)
         try {
             await this.rest.auth_user(this.dataUser).subscribe(async (data) => {
                 if (data["success"]) {
-                    // localStorage.setItem('token', data['token']);
-                    console.log(data)
+                    localStorage.setItem('token', data['token']);
+                    // this.router.navigate(['/home']);
+                    this.data.getProfile();
                 }
             });
         } catch (error) {

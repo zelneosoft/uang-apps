@@ -36,12 +36,13 @@ export class UserService {
         if (localStorage.getItem('token') !== null){
             await this.rest.get_profile().subscribe((data) => {
                 if(data['success']){
-                    this.token = localStorage.getItem('token');
-                    this.user = data['data'];
-                    this.nameUser = this.user['user_name'].replace(/\w\S*/g,function(txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
-                    this.keyUser = this.user['user_name'].toUpperCase().slice(0,1);
-                    this.emailUser = this.user['user_email'];
-                    this.idUser = this.user['user_id'];
+                    console.log(data);
+                    // this.token = localStorage.getItem('token');
+                    // this.user = data['data'];
+                    // this.nameUser = this.user['user_name'].replace(/\w\S*/g,function(txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
+                    // this.keyUser = this.user['user_name'].toUpperCase().slice(0,1);
+                    // this.emailUser = this.user['user_email'];
+                    // this.idUser = this.user['user_id'];
                 }
             });
         }
