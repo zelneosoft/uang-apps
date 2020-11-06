@@ -1,21 +1,13 @@
-<!-- <table width="100%" border="0" style="margin-top: 10px;">
-    <tr>
-        <td align="left">
-            <span style="color: grey;">Hai,</span>
-            <br>
-            <span style="font-weight: 500; color: black">{{this.data['userName']}}</span>
-        </td>
-        <td align="right">
-            <img src="{{this.data['userPhoto']}}" style="width: 40px; border-radius: 10px;" alt="userImg">
-        </td>
-    </tr>
-</table> -->
 <div id="textbox">
     <p class="alignleft">
         <span style="color: grey;">Hai,</span>
         <br>
         <span style="font-weight: 500; color: black">{{this.data['userName']}}</span></p>
-    <p class="alignright"><img src="{{this.data['userPhoto']}}" style="width: 40px; border-radius: 50%;" alt="userImg"></p>
+    <p class="alignright"><img [matMenuTriggerFor]="beforeMenu" src="{{this.data['userPhoto']}}" style="width: 40px; border-radius: 50%;" alt="userImg"></p>
 </div>
+<mat-menu #beforeMenu="matMenu" xPosition="before">
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+</mat-menu>
 <div style="clear: both;"></div>
 <router-outlet></router-outlet>
