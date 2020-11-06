@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { UserService } from 'src/app/service/user.service';
@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
 
     auth2: any;
     dataUser;
+    link: string;
     @ViewChild('openDialogGoogle', {static: true }) loginElement: ElementRef;
     
     constructor(
@@ -19,11 +20,14 @@ export class LoginComponent implements OnInit {
         private rest: ApiService,
         public data: UserService,
         private router : Router,
+        private zone: NgZone
         )
-    { }
+    {
+        this.link = router['url'];
+    }
 
     ngOnInit(): void {
-        this.route.data.subscribe(v => console.log(v));
+        // this.route.data.subscribe(v => console.log(v));
         this.googleSDK();
     }
 
@@ -72,8 +76,10 @@ export class LoginComponent implements OnInit {
             await this.rest.auth_user(this.dataUser).subscribe(async (data) => {
                 if (data["success"]) {
                     localStorage.setItem('token', data['token']);
-                    this.router.navigate(['/home']);
-                    this.data.getProfile();
+                    this.zone.run(() => {
+                        this.router.navigate(['/home']);
+                        this.data.getProfile();
+                    });
                 }
             });
         } catch (error) {

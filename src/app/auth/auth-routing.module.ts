@@ -6,7 +6,6 @@ import { LoginComponent } from './login/login.component';
 const routes: Routes = [
     {
         path: '',
-        data : {title : 'Halaman Login'},
         component: LoginComponent
     }
 ];

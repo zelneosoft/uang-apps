@@ -48,12 +48,12 @@ export class ErrorComponent implements OnInit {
     closeExpired(): void {
         this.dialogRef.close();
         localStorage.clear();
-        this.router.navigate(['/']);
+        window.location.replace('/login');
     }
 
     logout(){
         localStorage.clear();
-        this.router.navigate(['/']);
+        window.location.replace('/login');
     }
 
 }

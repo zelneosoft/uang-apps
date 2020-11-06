@@ -9,13 +9,8 @@ import { ToolbarPageComponent } from './layout/toolbar-page/toolbar-page.compone
 const routes: Routes = [
     {
         path: 'login',
-        component: BlankComponent,
-        children: [
-            {
-                path: '',
-                loadChildren: './auth/auth.module#AuthModule'
-            }
-        ]
+        loadChildren: './auth/auth.module#AuthModule',
+        pathMatch: 'full',
     },
     {
         path: 'home',
@@ -47,7 +42,7 @@ const routes: Routes = [
     declarations: [],
     imports: [
         CommonModule,
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})
     ],
     exports: [RouterModule]
 })
