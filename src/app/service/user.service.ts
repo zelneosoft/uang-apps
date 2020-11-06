@@ -14,6 +14,9 @@ export class UserService {
     idUser      = '';
     nameUser    = '';
     emailUser   = '';
+    userName    = '';
+    userEmail   = '';
+    userPhoto   = '';
     token:any;
 
     constructor(
@@ -38,6 +41,9 @@ export class UserService {
                 if(data['success']){
                     this.token = localStorage.getItem('token');
                     this.user = data['user'];
+                    this.userName = this.user['userName'];
+                    this.userEmail = this.user['userEmail'];
+                    this.userPhoto = this.user['userPhotoUrl'];
                     // this.nameUser = this.user['user_name'].replace(/\w\S*/g,function(txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
                     // this.keyUser = this.user['user_name'].toUpperCase().slice(0,1);
                     // this.emailUser = this.user['user_email'];
