@@ -1,10 +1,20 @@
-<div>
-    <p class="alignleft">
-        <span style="color: grey;">Hai,</span>
-        <br>
-        <span style="font-weight: 500; color: black"></span></p>
-    <p class="alignright"><img src="" style="width: 40px; border-radius: 50%;" alt="userImg"></p>
+<div class="mt-15">
+    <div class="alignleft">
+        <button mat-icon-button routerLink="/home"><mat-icon>arrow_back</mat-icon></button>
+    </div>
+    <div class="alignright">
+        <button [matMenuTriggerFor]="beforeMenu" mat-icon-button><mat-icon>apps</mat-icon></button>
+    </div>
+    <div class="aligncenter">
+        <p>{{title}}</p>
+    </div>
 </div>
+<mat-menu #beforeMenu="matMenu" xPosition="before">
+    <button class="menu-item" routerLink="/setting" mat-menu-item>Setting</button>
+    <button class="menu-item" mat-menu-item>Laporan</button>
+    <button class="menu-item" (click)="logout()" mat-menu-item>Logout</button>
+</mat-menu>
 <div style="clear: both;"></div>
+<h2>Setting</h2>
 <router-outlet></router-outlet>
 <app-bottom-menu></app-bottom-menu>

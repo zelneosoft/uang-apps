@@ -8,7 +8,7 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class ToolbarMainComponent implements OnInit {
 
-    constructor( public data: UserService) {
+    constructor(public data: UserService) {
         this.data.getProfile()
     }
 
