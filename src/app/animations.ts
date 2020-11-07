@@ -35,8 +35,8 @@ trigger('triggerName', [
 		query(':enter', [style({ left: '-100%', opacity: 0, overflow: 'hidden' })]),
 		query(':leave', animateChild()),
 		group([
-			query(':leave', [animate('200ms ease-out', style({ left: '100%', opacity: 0, overflow: 'hidden' }))]),
-			query(':enter', [animate('200ms ease-out', style({ left: '0%', opacity: 1, overflow: 'hidden' }))])
+			query(':leave', [animate('300ms ease-out', style({ left: '100%', opacity: 0, overflow: 'hidden' }))]),
+			query(':enter', [animate('300ms ease-out', style({ left: '0%', opacity: 1, overflow: 'hidden' }))])
 		]),
 		query(':enter', animateChild())
 	]),
