@@ -117,11 +117,10 @@
     height: calc(80px + 20px);
     width: calc(80px + 20px);
     border-radius: calc(100px / 2);
-    /* background-color: #fdc0df; */
 }
 
 .icon-home,
-.icon-settings {
-    font-size: 29px;
-    color: #fdc0df;
+.icon-account {
+    font-size: 10px;
+    color: #bbb6b8;
 }
