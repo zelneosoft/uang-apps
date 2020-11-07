@@ -19,6 +19,7 @@ import { ProfileModule } from './page/profile/profile.module';
 import { HttpConfigInterceptor } from './service/INTERCEPTOR';
 import { ErrorComponent } from './error/error.component';
 import { ErrorDialogService } from './service/error-dialog.service';
+import { SettingModule } from './page/setting/setting.module';
 
 @NgModule({
     declarations: [
@@ -37,7 +38,8 @@ import { ErrorDialogService } from './service/error-dialog.service';
         RoutingModule,
         AuthModule,
         HomeModule,
-        ProfileModule
+        ProfileModule,
+        SettingModule
     ],
     providers: [
         AuthService,

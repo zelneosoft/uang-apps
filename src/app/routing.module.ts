@@ -43,7 +43,7 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                loadChildren: './page/profile/profile.module#ProfileModule',
+                loadChildren: './page/setting/setting.module#SettingModule',
                 canActivate: [AuthService]
             }
         ]
