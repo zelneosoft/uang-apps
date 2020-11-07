@@ -8,7 +8,7 @@
 <mat-menu #beforeMenu="matMenu" xPosition="before">
     <button class="menu-item" mat-menu-item>Setting</button>
     <button class="menu-item" mat-menu-item>Laporan</button>
-    <button class="menu-item" mat-menu-item>Logout</button>
+    <button class="menu-item" (click)="logout()" mat-menu-item>Logout</button>
 </mat-menu>
 <div style="clear: both;"></div>
 <router-outlet></router-outlet>

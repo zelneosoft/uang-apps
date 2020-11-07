@@ -16,4 +16,9 @@ export class ToolbarMainComponent implements OnInit {
         console.log(this.data)
     }
 
+    logout() {
+        localStorage.clear();
+        window.location.replace('/login');
+    }
+
 }
