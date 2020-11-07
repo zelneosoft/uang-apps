@@ -10,6 +10,14 @@ body, .menu-item {
     font-family: 'Quicksand', sans-serif;
 }
 
+svg#clouds {
+    position: fixed;
+    top: -160px;
+    left: -230px;
+    z-index: -10;
+    width: 1920px;
+}
+
 .mt-5 {
     margin-top: 5px;
 }
