@@ -39,6 +39,7 @@ const routes: Routes = [
     {
         path: 'setting',
         component: ToolbarPageComponent,
+        data: { animationState: 'Three' },
         children: [
             {
                 path: '',
