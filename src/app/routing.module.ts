@@ -15,6 +15,7 @@ const routes: Routes = [
     {
         path: 'home',
         component: ToolbarMainComponent,
+        data: { animationState: 'One' },
         children: [
             {
                 path: '',
@@ -25,6 +26,18 @@ const routes: Routes = [
     },
     {
         path: 'profile',
+        component: ToolbarPageComponent,
+        data: { animationState: 'Two' },
+        children: [
+            {
+                path: '',
+                loadChildren: './page/profile/profile.module#ProfileModule',
+                canActivate: [AuthService]
+            }
+        ]
+    },
+    {
+        path: 'setting',
         component: ToolbarPageComponent,
         children: [
             {

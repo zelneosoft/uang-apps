@@ -6,7 +6,7 @@
     <p class="alignright"><img [matMenuTriggerFor]="beforeMenu" src="{{this.data['userPhoto']}}" style="width: 40px; border-radius: 50%;" alt="userImg"></p>
 </div>
 <mat-menu #beforeMenu="matMenu" xPosition="before">
-    <button class="menu-item" mat-menu-item>Setting</button>
+    <button class="menu-item" routerLink="/setting" mat-menu-item>Setting</button>
     <button class="menu-item" mat-menu-item>Laporan</button>
     <button class="menu-item" (click)="logout()" mat-menu-item>Logout</button>
 </mat-menu>
