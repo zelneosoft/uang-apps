@@ -12,7 +12,7 @@ body, .menu-item {
 
 svg#clouds {
     position: fixed;
-    top: -160px;
+    top: -170px;
     left: -230px;
     z-index: -10;
     width: 1920px;
@@ -28,4 +28,8 @@ svg#clouds {
 
 .mt-15 {
     margin-top: 15px;
+}
+
+.mt-100 {
+    margin-top: 100px;
 }
