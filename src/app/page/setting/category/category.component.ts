@@ -8,7 +8,8 @@ import { ApiService } from 'src/app/service/api.service';
 })
 export class CategoryComponent implements OnInit {
 
-    dataCategory:Object;
+    dataCategoryIn:Object;
+    dataCategoryOut:Object;
 
     constructor(
         private rest: ApiService,
@@ -18,7 +19,8 @@ export class CategoryComponent implements OnInit {
         await this.rest.get_category().subscribe((data) => {
             console.log(data)
             if (data['success']){
-                this.dataCategory = data['data']
+                this.dataCategoryIn = data['in'];
+                this.dataCategoryOut = data['out'];
             }
         });
     }
