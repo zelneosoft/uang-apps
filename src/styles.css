@@ -18,6 +18,11 @@ svg#clouds {
     width: 1920px;
 }
 
+.container-page {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 .mt-5 {
     margin-top: 5px;
 }
