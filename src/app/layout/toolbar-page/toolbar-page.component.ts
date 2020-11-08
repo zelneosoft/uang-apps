@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {Location} from '@angular/common';
 
 @Component({
@@ -10,14 +10,17 @@ import {Location} from '@angular/common';
 export class ToolbarPageComponent implements OnInit {
 
     title = '';
+    link = '';
 
     constructor(
         private route: ActivatedRoute,
         private _location: Location
-    ) { }
+    ) { 
+        this.link = Router['url'];
+    }
 
     ngOnInit(): void {
-        this.route.data.subscribe(v => this.title = v['title1']);        
+        this.route.data.subscribe(v => this.title = v['title']);
     }
 
     back() {

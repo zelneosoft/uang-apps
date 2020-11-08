@@ -16,7 +16,6 @@ export class LoginComponent implements OnInit {
     @ViewChild('openDialogGoogle', {static: true }) loginElement: ElementRef;
     
     constructor(
-        private route: ActivatedRoute,
         private rest: ApiService,
         public data: UserService,
         private router : Router,
@@ -27,7 +26,6 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        // this.route.data.subscribe(v => console.log(v));
         this.googleSDK();
     }
 
