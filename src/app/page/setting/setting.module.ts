@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { MainSettingComponent } from './main-setting/main-setting.component';
 import { MaterialModule } from 'src/app/material.module';
 import { SettingRoutingModule } from './setting-routing.module';
+import { CategoryComponent } from './category/category.component';
 
 
 
 @NgModule({
-    declarations: [MainSettingComponent],
+    declarations: [MainSettingComponent, CategoryComponent],
     imports: [
         CommonModule,
         SettingRoutingModule,

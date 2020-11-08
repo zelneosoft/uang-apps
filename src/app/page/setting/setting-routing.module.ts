@@ -2,12 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MainSettingComponent } from './main-setting/main-setting.component';
 import { RouterModule, Routes } from '@angular/router';
+import { CategoryComponent } from './category/category.component';
 
 const routes: Routes = [
     {
         path: '',
-        data : {title : 'Halaman Setting'},
         component: MainSettingComponent
+    },
+    {
+        path: 'category',
+        component: CategoryComponent
     }
 ];
 
