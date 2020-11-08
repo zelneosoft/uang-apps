@@ -6,5 +6,6 @@
 }
 .aligncenter {
     text-align: center;
-    
+    font-weight: bold;
+    line-height: 43px;
 }
