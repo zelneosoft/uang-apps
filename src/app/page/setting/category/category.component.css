@@ -15,7 +15,12 @@
     font-size: 14px;
 }
 
-.list-vl {
+.list-vl-green {
     border-left: 6px solid green;
+    height: 30px;
+}
+
+.list-vl-red {
+    border-left: 6px solid red;
     height: 30px;
 }
