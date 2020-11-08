@@ -2,15 +2,15 @@
     <div class="title">
         Kategori Pemasukan
     </div>
-    <div class="loop">
+    <div class="loop" *ngFor="let item of this.dataCategory">
         <div class="list-card">
             <table width="100%" border="0">
                 <tr>
-                    <td valign="middle">
+                    <td valign="middle" width="7%">
                         <div class="list-vl-green"></div>
                     </td>
                     <td valign="middle" class="list-desc">
-                        Bonus Bulanan Kantor
+                       {{item.categoryDescription}}
                     </td>
                     <td align="right" valign="middle" width="10%">
                         <button routerLink="/setting/category" mat-icon-button>
