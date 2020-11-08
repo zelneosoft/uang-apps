@@ -1,6 +1,6 @@
 <div class="mt-15">
     <div class="alignleft">
-        <button mat-icon-button routerLink="/home"><mat-icon>arrow_back</mat-icon></button>
+        <button mat-icon-button (click)="back()"><mat-icon>arrow_back</mat-icon></button>
     </div>
     <div class="alignright">
         <button [matMenuTriggerFor]="beforeMenu" mat-icon-button><mat-icon>apps</mat-icon></button>
@@ -10,8 +10,8 @@
     </div>
 </div>
 <mat-menu #beforeMenu="matMenu" xPosition="before">
-    <button class="menu-item" routerLink="/setting" mat-menu-item>Setting</button>
-    <button class="menu-item" mat-menu-item>Laporan</button>
+    <button class="menu-item" routerLink="/setting" mat-menu-item>Pengaturan</button>
+    <button class="menu-item" routerLink="/setting" mat-menu-item>Laporan</button>
     <button class="menu-item" (click)="logout()" mat-menu-item>Logout</button>
 </mat-menu>
 <div style="clear: both;"></div>

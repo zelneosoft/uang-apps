@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
     selector: 'app-toolbar-page',
@@ -12,10 +13,15 @@ export class ToolbarPageComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
+        private _location: Location
     ) { }
 
     ngOnInit(): void {
-        this.route.data.subscribe(v => this.title = v['title']);        
+        this.route.data.subscribe(v => this.title = v['title1']);        
+    }
+
+    back() {
+        this._location.back();
     }
 
 }
