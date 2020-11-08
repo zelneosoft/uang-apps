@@ -27,7 +27,7 @@ const routes: Routes = [
     {
         path: 'profile',
         component: ToolbarPageComponent,
-        data: { animationState: 'Two' },
+        data: { animationState: 'Two', title: 'Profil' },
         children: [
             {
                 path: '',
