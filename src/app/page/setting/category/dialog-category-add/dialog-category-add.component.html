@@ -4,14 +4,14 @@
 </mat-radio-group> -->
 <mat-form-field class="form-field">
     <mat-label>Pilih kategori</mat-label>
-    <mat-select class="mat-select">
+    <mat-select [(ngModel)]="kategori" name="kategori" class="mat-select">
       <mat-option value="1">Pengeluaran</mat-option>
       <mat-option value="0">Pemasukan</mat-option>
     </mat-select>
 </mat-form-field>
 <mat-form-field class="form-field">
     <mat-label>Nama kategori</mat-label>
-    <input matInput type="text" [(ngModel)]="kategori" name="kategori" autocomplete="off">
+    <input matInput type="text" [(ngModel)]="nama" name="nama" autocomplete="off">
 </mat-form-field>
 <table width="100%">
     <tr>

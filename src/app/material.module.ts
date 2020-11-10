@@ -9,6 +9,7 @@ import { MatInputModule} from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const ExportMatModule = [   
     MatButtonModule,
@@ -19,7 +20,8 @@ const ExportMatModule = [
     MatInputModule,
     MatFormFieldModule,
     MatRadioModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule
 ]
 
 @NgModule({

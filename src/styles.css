@@ -6,8 +6,13 @@ body {
     background-color:  #FAFAFA;
 }
 
-body, .menu-item, .form-field, .mat-radio {
-    font-family: 'Quicksand', sans-serif;
+body, 
+button,
+.menu-item, 
+.form-field, 
+.mat-radio,
+.mat-snackbar {
+    font-family: 'Quicksand', sans-serif !important;
 }
 
 .divider {

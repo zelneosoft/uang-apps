@@ -20,6 +20,8 @@ import { HttpConfigInterceptor } from './service/INTERCEPTOR';
 import { ErrorComponent } from './error/error.component';
 import { ErrorDialogService } from './service/error-dialog.service';
 import { SettingModule } from './page/setting/setting.module';
+import { FormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
     declarations: [
@@ -36,10 +38,12 @@ import { SettingModule } from './page/setting/setting.module';
         MaterialModule,
         HttpClientModule,
         RoutingModule,
+        FormsModule,
         AuthModule,
         HomeModule,
         ProfileModule,
-        SettingModule
+        SettingModule,
+        MatSnackBarModule
     ],
     providers: [
         AuthService,

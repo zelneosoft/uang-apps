@@ -5,6 +5,7 @@ import { MaterialModule } from 'src/app/material.module';
 import { SettingRoutingModule } from './setting-routing.module';
 import { CategoryComponent } from './category/category.component';
 import { DialogCategoryAddComponent } from './category/dialog-category-add/dialog-category-add.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +14,8 @@ import { DialogCategoryAddComponent } from './category/dialog-category-add/dialo
     imports: [
         CommonModule,
         SettingRoutingModule,
-        MaterialModule
+        MaterialModule,
+        FormsModule
     ]
 })
 export class SettingModule { }

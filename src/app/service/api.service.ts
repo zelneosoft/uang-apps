@@ -30,4 +30,8 @@ export class ApiService {
         return this.http.get(`${this.link_url()}/uangku-category`,{ headers: this.getHeaders() });
     }
 
+    save_category(data) {
+        return this.http.post(`${this.link_url()}/uangku-category/insert`,data ,{ headers: this.getHeaders() });
+    }
+
 }
