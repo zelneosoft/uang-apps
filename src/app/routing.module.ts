@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { BlankComponent } from './layout/blank/blank.component';
 import { ToolbarMainComponent } from './layout/toolbar-main/toolbar-main.component';
 import { AuthService } from './service/auth.service';
 import { ToolbarPageComponent } from './layout/toolbar-page/toolbar-page.component';
@@ -15,7 +14,6 @@ const routes: Routes = [
     {
         path: 'home',
         component: ToolbarMainComponent,
-        data: { animationState: 'One' },
         children: [
             {
                 path: '',
@@ -27,7 +25,7 @@ const routes: Routes = [
     {
         path: 'profile',
         component: ToolbarPageComponent,
-        data: { animationState: 'Two', title: 'Profil' },
+        data: { title: 'Profil' },
         children: [
             {
                 path: '',
@@ -39,7 +37,7 @@ const routes: Routes = [
     {
         path: 'setting',
         component: ToolbarPageComponent,
-        data: { animationState: 'Three', title: 'Pengaturan' },
+        data: { title: 'Pengaturan' },
         children: [
             {
                 path: '',

@@ -5,13 +5,16 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatInputModule} from '@angular/material/input';
 
 const ExportMatModule = [   
     MatButtonModule,
     MatRippleModule,
     MatDialogModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatInputModule,
+    
 ]
 
 @NgModule({

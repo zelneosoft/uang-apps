@@ -27,4 +27,8 @@ export class ToolbarPageComponent implements OnInit {
         this._location.back();
     }
 
+    logout() {
+        this._location.back();
+    }
+
 }
