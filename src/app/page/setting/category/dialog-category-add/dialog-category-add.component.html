@@ -1,3 +1,25 @@
-
-  <p>What's your favorite animal?</p>
-    <input matInput >
+<!-- <mat-radio-group aria-label="Select an option">
+    <mat-radio-button class="mat-radio" value="1">Pengeluaran</mat-radio-button>
+    <mat-radio-button class="mat-radio" value="2">Pemasukan</mat-radio-button>
+</mat-radio-group> -->
+<mat-form-field class="form-field">
+    <mat-label>Pilih kategori</mat-label>
+    <mat-select class="mat-select">
+      <mat-option value="1">Pengeluaran</mat-option>
+      <mat-option value="0">Pemasukan</mat-option>
+    </mat-select>
+</mat-form-field>
+<mat-form-field class="form-field">
+    <mat-label>Nama kategori</mat-label>
+    <input matInput type="text" [(ngModel)]="kategori" name="kategori" autocomplete="off">
+</mat-form-field>
+<table width="100%">
+    <tr>
+        <td width="50%">
+            <button (click)="onNoClick()" mat-stroked-button color="warn" class="btn-block">Batal</button>
+        </td>
+        <td width="50%">
+            <button (click)="save()" mat-stroked-button color="primary" class="btn-block">Simpan</button>
+        </td>
+    </tr>
+</table>

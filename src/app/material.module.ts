@@ -6,6 +6,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule} from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
 
 const ExportMatModule = [   
     MatButtonModule,
@@ -14,7 +17,9 @@ const ExportMatModule = [
     MatIconModule,
     MatMenuModule,
     MatInputModule,
-    
+    MatFormFieldModule,
+    MatRadioModule,
+    MatSelectModule
 ]
 
 @NgModule({

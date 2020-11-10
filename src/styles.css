@@ -1,21 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 body {
     background-color:  #FAFAFA;
 }
 
-body::-webkit-scrollbar {
-    display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-body {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
-body, .menu-item {
+body, .menu-item, .form-field, .mat-radio {
     font-family: 'Quicksand', sans-serif;
 }
 
@@ -41,6 +32,11 @@ svg#clouds {
     padding-right: 10px;
 }
 
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
 .mat-btn-add {
     background-color: red;
 }
@@ -59,4 +55,14 @@ svg#clouds {
 
 .mt-100 {
     margin-top: 100px;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
