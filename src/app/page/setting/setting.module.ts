@@ -4,11 +4,12 @@ import { MainSettingComponent } from './main-setting/main-setting.component';
 import { MaterialModule } from 'src/app/material.module';
 import { SettingRoutingModule } from './setting-routing.module';
 import { CategoryComponent } from './category/category.component';
+import { DialogCategoryAddComponent } from './category/dialog-category-add/dialog-category-add.component';
 
 
 
 @NgModule({
-    declarations: [MainSettingComponent, CategoryComponent],
+    declarations: [MainSettingComponent, CategoryComponent, DialogCategoryAddComponent],
     imports: [
         CommonModule,
         SettingRoutingModule,
