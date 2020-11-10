@@ -6,11 +6,12 @@ import { SettingRoutingModule } from './setting-routing.module';
 import { CategoryComponent } from './category/category.component';
 import { DialogCategoryAddComponent } from './category/dialog-category-add/dialog-category-add.component';
 import { FormsModule } from '@angular/forms';
+import { DialogCategoryEditComponent } from './category/dialog-category-edit/dialog-category-edit.component';
 
 
 
 @NgModule({
-    declarations: [MainSettingComponent, CategoryComponent, DialogCategoryAddComponent],
+    declarations: [MainSettingComponent, CategoryComponent, DialogCategoryAddComponent, DialogCategoryEditComponent],
     imports: [
         CommonModule,
         SettingRoutingModule,
