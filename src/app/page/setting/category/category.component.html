@@ -12,8 +12,13 @@
                     <td valign="middle" class="list-desc">
                        {{item.categoryDescription}}
                     </td>
-                    <td align="right" valign="middle" width="10%">
-                        <button (click)="openDialogCategoryEdit()" mat-icon-button>
+                    <td *ngIf="item.categoryUser == '2105'" align="right" valign="middle" width="10%">
+                        <button disabled mat-icon-button>
+                            <mat-icon style="font-size: 22px;">edit</mat-icon>
+                        </button>
+                    </td>
+                    <td *ngIf="item.categoryUser != '2105'" align="right" valign="middle" width="10%">
+                        <button (click)="openDialogCategoryEdit(item)" mat-icon-button>
                             <mat-icon style="font-size: 22px;">edit</mat-icon>
                         </button>
                     </td>
@@ -34,8 +39,13 @@
                     <td valign="middle" class="list-desc">
                        {{item.categoryDescription}}
                     </td>
-                    <td align="right" valign="middle" width="10%">
-                        <button (click)="openDialogCategoryEdit()" mat-icon-button>
+                    <td *ngIf="item.categoryUser == '2105'" align="right" valign="middle" width="10%">
+                        <button disabled mat-icon-button>
+                            <mat-icon style="font-size: 22px;">edit</mat-icon>
+                        </button>
+                    </td>
+                    <td *ngIf="item.categoryUser != '2105'" align="right" valign="middle" width="10%">
+                        <button (click)="openDialogCategoryEdit(item)" mat-icon-button>
                             <mat-icon style="font-size: 22px;">edit</mat-icon>
                         </button>
                     </td>

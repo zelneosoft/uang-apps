@@ -38,10 +38,10 @@ export class CategoryComponent implements OnInit {
         });
     }
 
-    openDialogCategoryEdit() {
+    openDialogCategoryEdit(arr) {
         const dialogRef = this.dialog.open(DialogCategoryEditComponent, {
             width: '400px',
-            data: {},
+            data: arr,
         });
         dialogRef.afterClosed().subscribe(arr => {
             this.ngOnInit();
