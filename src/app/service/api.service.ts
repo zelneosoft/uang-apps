@@ -38,4 +38,8 @@ export class ApiService {
         return this.http.post(`${this.link_url()}/uangku-category/update`,data ,{ headers: this.getHeaders() });
     }
 
+    delete_category(data) {
+        return this.http.post(`${this.link_url()}/uangku-category/delete`,data ,{ headers: this.getHeaders() });
+    }
+
 }

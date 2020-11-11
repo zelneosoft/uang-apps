@@ -11,6 +11,7 @@ import { DialogCategoryEditComponent } from './dialog-category-edit/dialog-categ
 })
 export class CategoryComponent implements OnInit {
 
+    loading = true;
     dataCategoryIn:Object;
     dataCategoryOut:Object;
 
@@ -22,6 +23,7 @@ export class CategoryComponent implements OnInit {
     async ngOnInit() {
         await this.rest.get_category().subscribe((data) => {
             if (data['success']){
+                this.loading = false;
                 this.dataCategoryIn = data['in'];
                 this.dataCategoryOut = data['out'];
             }
@@ -34,6 +36,7 @@ export class CategoryComponent implements OnInit {
             data: {},
         });
         dialogRef.afterClosed().subscribe(arr => {
+            this.loading = true;
             this.ngOnInit();
         });
     }
@@ -44,6 +47,7 @@ export class CategoryComponent implements OnInit {
             data: arr,
         });
         dialogRef.afterClosed().subscribe(arr => {
+            this.loading = true;
             this.ngOnInit();
         });
     }

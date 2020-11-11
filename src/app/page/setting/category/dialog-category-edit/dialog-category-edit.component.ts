@@ -25,7 +25,14 @@ export class DialogCategoryEditComponent implements OnInit {
         this.nama = this.dataCategory.categoryDescription;
     }
 
-    delete(): void {
+    async delete() {
+        try {
+            await this.rest.delete_category({
+                id: this.id
+            }).subscribe(async (data)=>{}); 
+        } catch (error) {
+            console.log(error);
+        }
         this.dialogRef.close();
     }
 
