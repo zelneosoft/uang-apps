@@ -19,18 +19,6 @@
     box-shadow: 0 10px 20px rgba(82, 74, 74, 0.3);
 }
 
-/* .navbar:after {
-    content: "";
-    position: absolute;
-    bottom: 7px;
-    height: 4px;
-    width: 35%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: gray;
-    opacity: 0.3;
-} */
-
 .circle {
     position: absolute;
     left: 50%;
