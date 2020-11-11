@@ -22,6 +22,7 @@ import { ErrorDialogService } from './service/error-dialog.service';
 import { SettingModule } from './page/setting/setting.module';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AddTransactionComponent } from './page/add-transaction/add-transaction.component';
 
 @NgModule({
     declarations: [
@@ -30,7 +31,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
         ToolbarMainComponent,
         ToolbarPageComponent,
         BottomMenuComponent,
-        ErrorComponent
+        ErrorComponent,
+        AddTransactionComponent
     ],
     imports: [
         BrowserModule,
