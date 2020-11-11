@@ -1,5 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ApiService } from 'src/app/service/api.service';
 
 @Component({
     selector: 'app-dialog-category-edit',
@@ -8,19 +10,42 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class DialogCategoryEditComponent implements OnInit {
 
+    id = '';
     nama = '';
 
     constructor(
         @Inject(MAT_DIALOG_DATA) public dataCategory: any,
         public dialogRef: MatDialogRef<DialogCategoryEditComponent>,
+        private _snackBar: MatSnackBar,
+        private rest: ApiService,
     ) { }
 
     ngOnInit(): void {
-        this.nama = this.dataCategory.categoryDescription
+        this.id = this.dataCategory.categoryID;
+        this.nama = this.dataCategory.categoryDescription;
     }
 
     delete(): void {
         this.dialogRef.close();
+    }
+
+    async edit(){
+        if (this.nama == "") {
+            this._snackBar.open('Kolom isian harus terisi', 'Oke', {
+                duration: 4000,
+                panelClass: ['mat-snackbar', 'mat-primary']
+            });
+        } else {
+            try {
+                await this.rest.update_category({
+                    id: this.id,
+                    desc: this.nama
+                }).subscribe(async (data)=>{}); 
+            } catch (error) {
+                console.log(error);
+            }
+            this.dialogRef.close();
+        }
     }
 
 }
