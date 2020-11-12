@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ApiService } from 'src/app/service/api.service';
 import { AddTransactionComponent } from '../add-transaction/add-transaction.component';
 
 @Component({
@@ -9,11 +10,26 @@ import { AddTransactionComponent } from '../add-transaction/add-transaction.comp
 })
 export class HomeComponent implements OnInit {
 
+    loading = true;
+    totalSaldo = 0;
+    transactionIn:Object;
+    transactionOut:Object;
+
     constructor(
-        public dialog: MatDialog
+        public dialog: MatDialog,
+        private rest: ApiService,
     ) { }
 
-    ngOnInit(): void {
+    async ngOnInit() {
+        await this.rest.get_data_home().subscribe((data) => {
+            if (data['success']){
+                this.loading = false;
+                console.log(data['data'][1]);
+                this.totalSaldo = data['data'][0][0]['totalSaldo'];
+                this.transactionIn = data['data'][1];
+                this.transactionOut = data['data'][2];
+            }
+        });
     }
 
     openDialogAdd() {
@@ -22,7 +38,7 @@ export class HomeComponent implements OnInit {
             data: {},
         });
         dialogRef.afterClosed().subscribe(arr => {
-            // this.loading = true;
+            this.loading = true;
             this.ngOnInit();
         });
     }

@@ -1,6 +1,10 @@
+<div class="loading" *ngIf="loading">
+    <mat-spinner style="margin:0 auto;"  mode="indeterminate"></mat-spinner>
+</div>
+
 <div class="card mt-10">
     <span style="color: grey;">Saldo anda saat ini</span>
-    <h1 style="line-height: 0;">Rp. 1.870.000</h1>
+    <h1 style="line-height: 0;">Rp. {{totalSaldo.toLocaleString(['id'])}}</h1>
 </div>
 
 <div class="title">
@@ -12,32 +16,21 @@
 </div>
 
 <div class="mt-10">
-    <table width="100%" border="0" class="mt-5">
-        <tr>
-            <td rowspan="2" valign="top">
-                <mat-icon>north_east</mat-icon>
-            </td>
-            <td align="left" class="list-title">Gaji</td>
-            <td align="right"  class="list-title">Rp. 1.900.000</td>
-        </tr>
-        <tr>
-            <td align="left" class="list-sub-title">Gaji Bulan Agustus</td>
-            <td align="right" class="list-sub-title">26 Agustus 2020</td>
-        </tr>
-    </table>
-    <table width="100%" border="0" class="mt-5">
-        <tr>
-            <td rowspan="2" valign="top">
-                <mat-icon>north_east</mat-icon>
-            </td>
-            <td align="left" class="list-title">Gaji</td>
-            <td align="right"  class="list-title">Rp. 1.900.000</td>
-        </tr>
-        <tr>
-            <td align="left" class="list-sub-title">Gaji Bulan Agustus</td>
-            <td align="right" class="list-sub-title">26 Agustus 2020</td>
-        </tr>
-    </table>
+    <div *ngFor="let item of this.transactionIn">
+        <table width="100%" border="0" class="mt-5">
+            <tr>
+                <td rowspan="2" valign="top">
+                    <mat-icon>north_east</mat-icon>
+                </td>
+                <td align="left" class="list-title">{{item.categoryDescription}}</td>
+                <td align="right"  class="list-title">Rp. {{item.inAmt.toLocaleString(['id'])}}</td>
+            </tr>
+            <tr>
+                <td align="left" class="list-sub-title">{{item.inDescription}}</td>
+                <td align="right" class="list-sub-title">{{item.inCreateAt | date:'dd MMM yyyy'}}</td>
+            </tr>
+        </table>
+    </div>
     <table width="100%" border="0" class="mt-5">
         <tr>
             <td></td>
@@ -55,45 +48,21 @@
 </div>
 
 <div class="mt-10">
-    <table width="100%" border="0" class="mt-5">
-        <tr>
-            <td rowspan="2" valign="top">
-                <mat-icon>south_west</mat-icon>
-            </td>
-            <td align="left" class="list-title">Belanja Umum</td>
-            <td align="right"  class="list-title">Rp. 15.000</td>
-        </tr>
-        <tr>
-            <td align="left" class="list-sub-title">Beli Rokok</td>
-            <td align="right" class="list-sub-title">26 Agustus 2020</td>
-        </tr>
-    </table>
-    <table width="100%" border="0" class="mt-5">
-        <tr>
-            <td rowspan="2" valign="top">
-                <mat-icon>south_west</mat-icon>
-            </td>
-            <td align="left" class="list-title">Belanja Umum</td>
-            <td align="right"  class="list-title">Rp. 15.000</td>
-        </tr>
-        <tr>
-            <td align="left" class="list-sub-title">Beli Rokok</td>
-            <td align="right" class="list-sub-title">26 Agustus 2020</td>
-        </tr>
-    </table>
-    <table width="100%" border="0" class="mt-5">
-        <tr>
-            <td rowspan="2" valign="top">
-                <mat-icon>south_west</mat-icon>
-            </td>
-            <td align="left" class="list-title">Belanja Umum</td>
-            <td align="right"  class="list-title">Rp. 15.000</td>
-        </tr>
-        <tr>
-            <td align="left" class="list-sub-title">Beli Rokok</td>
-            <td align="right" class="list-sub-title">26 Agustus 2020</td>
-        </tr>
-    </table>
+    <div *ngFor="let item of this.transactionOut">
+        <table width="100%" border="0" class="mt-5">
+            <tr>
+                <td rowspan="2" valign="top">
+                    <mat-icon>south_west</mat-icon>
+                </td>
+                <td align="left" class="list-title">Belanja Umum</td>
+                <td align="right"  class="list-title">Rp. 15.000</td>
+            </tr>
+            <tr>
+                <td align="left" class="list-sub-title">Beli Rokok</td>
+                <td align="right" class="list-sub-title">26 Agustus 2020</td>
+            </tr>
+        </table>
+    </div>
     <table width="100%" border="0" class="mt-5">
         <tr>
             <td></td>
