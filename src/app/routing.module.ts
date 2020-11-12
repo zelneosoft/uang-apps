@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { ToolbarMainComponent } from './layout/toolbar-main/toolbar-main.component';
 import { AuthService } from './service/auth.service';
+import { AnonymousService } from './service/anonymous.service';
 import { ToolbarPageComponent } from './layout/toolbar-page/toolbar-page.component';
 
 const routes: Routes = [
@@ -10,6 +11,7 @@ const routes: Routes = [
         path: 'login',
         loadChildren: './auth/auth.module#AuthModule',
         pathMatch: 'full',
+        canActivate: [AnonymousService]
     },
     {
         path: 'home',
