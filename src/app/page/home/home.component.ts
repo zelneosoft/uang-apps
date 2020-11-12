@@ -23,11 +23,14 @@ export class HomeComponent implements OnInit {
     async ngOnInit() {
         await this.rest.get_data_home().subscribe((data) => {
             if (data['success']){
-                this.loading = false;
-                console.log(data['data'][1]);
-                this.totalSaldo = data['data'][0][0]['totalSaldo'];
-                this.transactionIn = data['data'][1];
-                this.transactionOut = data['data'][2];
+                if (data['data'][0].length == 0){
+                    this.loading = false;
+                } else {
+                    this.loading = false;
+                    this.totalSaldo = data['data'][0][0]['totalSaldo'];
+                    this.transactionIn = data['data'][1];
+                    this.transactionOut = data['data'][2];
+                }
             }
         });
     }

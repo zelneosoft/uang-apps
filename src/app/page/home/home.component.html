@@ -19,8 +19,8 @@
     <div *ngFor="let item of this.transactionIn">
         <table width="100%" border="0" class="mt-5">
             <tr>
-                <td rowspan="2" valign="top">
-                    <mat-icon>north_east</mat-icon>
+                <td rowspan="2" valign="top" width="10%">
+                    <mat-icon style="color: green;">north_east</mat-icon>
                 </td>
                 <td align="left" class="list-title">{{item.categoryDescription}}</td>
                 <td align="right"  class="list-title">Rp. {{item.inAmt.toLocaleString(['id'])}}</td>
@@ -36,7 +36,9 @@
             <td></td>
         </tr>
         <tr>
-            <td align="right" class="list-sub-title">Lihat semua</td>
+            <td align="right" class="list-sub-title">
+                <span routerLink="/cash-in" style="color: blue;">Lihat semua</span>
+            </td>
         </tr>
     </table>
 </div>
@@ -51,15 +53,15 @@
     <div *ngFor="let item of this.transactionOut">
         <table width="100%" border="0" class="mt-5">
             <tr>
-                <td rowspan="2" valign="top">
-                    <mat-icon>south_west</mat-icon>
+                <td rowspan="2" valign="top" width="10%">
+                    <mat-icon color="warn">south_west</mat-icon>
                 </td>
-                <td align="left" class="list-title">Belanja Umum</td>
-                <td align="right"  class="list-title">Rp. 15.000</td>
+                <td align="left" class="list-title">{{item.categoryDescription}}</td>
+                <td align="right"  class="list-title">Rp. {{item.outAmt.toLocaleString(['id'])}}</td>
             </tr>
             <tr>
-                <td align="left" class="list-sub-title">Beli Rokok</td>
-                <td align="right" class="list-sub-title">26 Agustus 2020</td>
+                <td align="left" class="list-sub-title">{{item.outDescription}}</td>
+                <td align="right" class="list-sub-title">{{item.outCreateAt | date:'dd MMM yyyy'}}</td>
             </tr>
         </table>
     </div>
@@ -68,7 +70,9 @@
             <td></td>
         </tr>
         <tr>
-            <td align="right" class="list-sub-title">Lihat semua</td>
+            <td align="right" class="list-sub-title">
+                <span routerLink="/cash-out" style="color: blue;">Lihat semua</span>
+            </td>
         </tr>
     </table>
 </div>
