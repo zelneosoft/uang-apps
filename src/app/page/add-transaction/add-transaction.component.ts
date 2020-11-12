@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ApiService } from 'src/app/service/api.service';
 
 @Component({
     selector: 'app-add-transaction',
@@ -7,21 +10,68 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddTransactionComponent implements OnInit {
 
+    tipe;
     kategori;
     nominal;
     desc;
+    dataCategory: any;
 
-    constructor() { }
+    constructor(
+        public dialogRef: MatDialogRef<AddTransactionComponent>,
+        private _snackBar: MatSnackBar,
+        private rest: ApiService,
+    ) { }
 
     ngOnInit(): void {
     }
 
-    save() {
-
+    async getCategory(arr){
+        try {
+            await this.rest.get_category().subscribe((data) => {
+                if (arr == 0) {
+                    this.dataCategory = data['in'];
+                } else {
+                    this.dataCategory = data['out'];
+                }
+            })
+        } catch (error) {
+            console.log(error);
+        }
     }
 
-    onNoClick() {
+    async save() {
+        if (this.kategori == "" || this.nominal == "" || this.desc == "") {
+            this._snackBar.open('Kolom isian harus terisi semua', 'Oke', {
+                duration: 4000,
+                panelClass: ['mat-snackbar', 'mat-primary']
+            });
+        } else {
+            if (this.kategori == 0) {
+                try {
+                    await this.rest.save_transaction_in({
+                        desc: this.desc,                    
+                        amt: this.nominal
+                    }).subscribe(async (data)=>{}); 
+                } catch (error) {
+                    console.log(error);
+                }
+                this.dialogRef.close();
+            } else {
+                try {
+                    await this.rest.save_transaction_out({
+                        desc: this.desc,                    
+                        amt: this.nominal
+                    }).subscribe(async (data)=>{}); 
+                } catch (error) {
+                    console.log(error);
+                }
+                this.dialogRef.close();
+            }
+        }
+    }
 
+    onNoClick(): void {
+        this.dialogRef.close();
     }
 
 }

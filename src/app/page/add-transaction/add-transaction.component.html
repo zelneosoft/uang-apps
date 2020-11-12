@@ -1,8 +1,16 @@
 <mat-form-field class="form-field">
+    <mat-label>Pilih tipe</mat-label>
+    <mat-select [(ngModel)]="tipe" name="tipe" class="mat-select" (selectionChange)="getCategory($event.value)">
+        <mat-option value="1">Pengeluaran</mat-option>
+        <mat-option value="0">Pemasukan</mat-option>
+    </mat-select>
+</mat-form-field>
+<mat-form-field class="form-field">
     <mat-label>Pilih kategori</mat-label>
     <mat-select [(ngModel)]="kategori" name="kategori" class="mat-select">
-      <mat-option value="1">Pengeluaran</mat-option>
-      <mat-option value="0">Pemasukan</mat-option>
+        <mat-option *ngFor="let item of dataCategory" [value]="item.categoryID">
+            {{ item.categoryDescription }}
+        </mat-option>
     </mat-select>
 </mat-form-field>
 <mat-form-field class="form-field">
