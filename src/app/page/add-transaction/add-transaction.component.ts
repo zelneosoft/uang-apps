@@ -53,16 +53,17 @@ export class AddTransactionComponent implements OnInit {
     }
 
     async save() {
-        if (this.kategori == "" || this.nominal == "" || this.desc == "") {
+        if (this.tipe == "" || this.kategori == "" || this.desc == "" || this.nominal == "" || this.nominal == null || this.nominal == 0) {
             this._snackBar.open('Kolom isian harus terisi semua', 'Oke', {
                 duration: 4000,
                 panelClass: ['mat-snackbar', 'mat-primary']
             });
         } else {
-            if (this.kategori == 0) {
+            if (this.tipe == 0) {
                 try {
                     await this.rest.save_transaction_in({
-                        desc: this.desc,                    
+                        idCategory: this.kategori,
+                        desc: this.desc,
                         amt: this.nominal
                     }).subscribe(async (data)=>{}); 
                 } catch (error) {
@@ -72,6 +73,7 @@ export class AddTransactionComponent implements OnInit {
             } else {
                 try {
                     await this.rest.save_transaction_out({
+                        idCategory: this.kategori,
                         desc: this.desc,                    
                         amt: this.nominal
                     }).subscribe(async (data)=>{}); 

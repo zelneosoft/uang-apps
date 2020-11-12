@@ -51,11 +51,11 @@ export class ApiService {
     }
 
     save_transaction_in(data) {
-        return this.http.post(`${this.link_url()}/uangku-transaction/insert`,data ,{ headers: this.getHeaders() });
+        return this.http.post(`${this.link_url()}/uangku-transaction/insert-in`,data ,{ headers: this.getHeaders() });
     }
     
     save_transaction_out(data) {
-        return this.http.post(`${this.link_url()}/uangku-transaction/insert`,data ,{ headers: this.getHeaders() });
+        return this.http.post(`${this.link_url()}/uangku-transaction/insert-out`,data ,{ headers: this.getHeaders() });
     }
 
 }
