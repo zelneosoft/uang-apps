@@ -14,6 +14,7 @@ export class AddTransactionComponent implements OnInit {
     kategori;
     nominal;
     desc;
+    result;
     dataCategory: any;
 
     constructor(
@@ -23,6 +24,7 @@ export class AddTransactionComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
+        this.result = 0
     }
 
     async getCategory(arr){
@@ -37,6 +39,17 @@ export class AddTransactionComponent implements OnInit {
         } catch (error) {
             console.log(error);
         }
+    }
+
+    separatorProcess(): void {
+        let tempNominal;
+        if (this.nominal == null) {
+            this.nominal = 0
+        } else {
+            this.nominal = this.nominal
+        }
+        let numberVal = parseInt(this.nominal).toLocaleString();
+        this.result = numberVal;
     }
 
     async save() {

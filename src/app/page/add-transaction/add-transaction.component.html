@@ -14,14 +14,15 @@
     </mat-select>
 </mat-form-field>
 <mat-form-field class="form-field">
-    <mat-label>Nominal</mat-label>
-    <input matInput type="number" [(ngModel)]="nominal" name="nominal" autocomplete="off">
-</mat-form-field>
-<mat-form-field class="form-field">
     <mat-label>Deskripsi</mat-label>
     <input matInput type="text" [(ngModel)]="desc" name="desc" autocomplete="off">
 </mat-form-field>
-<table width="100%">
+<mat-form-field class="form-field">
+    <mat-label>Nominal</mat-label>
+    <input matInput type="number" [(ngModel)]="nominal" (input)="separatorProcess()" name="nominal" autocomplete="off">
+    <mat-hint>Rp. {{result}}</mat-hint>
+</mat-form-field>
+<table width="100%" class="mt-10">
     <tr>
         <td width="50%">
             <button (click)="onNoClick()" mat-stroked-button color="warn" class="btn-block">Batal</button>
