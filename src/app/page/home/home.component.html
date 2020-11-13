@@ -6,75 +6,79 @@
     <span style="color: grey;">Saldo anda saat ini</span>
     <h1 style="line-height: 0;">Rp. {{totalSaldo.toLocaleString(['id'])}}</h1>
 </div>
-
-<div class="title">
-    Transaksi terakhir
+<div *ngIf="!noData">
+    <p style="text-align: center;">Belum ada data transaksi</p>
 </div>
+<div *ngIf="noData">
+    <div class="title">
+        Transaksi terakhir
+    </div>
 
-<div class="sub-title">
-    Pemasukan
-</div>
+    <div class="sub-title">
+        Pemasukan
+    </div>
 
-<div class="mt-10">
-    <div *ngFor="let item of this.transactionIn">
+    <div class="mt-10">
+        <div *ngFor="let item of this.transactionIn">
+            <table width="100%" border="0" class="mt-5">
+                <tr>
+                    <td rowspan="2" valign="top" width="10%">
+                        <mat-icon style="color: green;">north_east</mat-icon>
+                    </td>
+                    <td align="left" class="list-title">{{item.categoryDescription}}</td>
+                    <td align="right"  class="list-title">Rp. {{item.inAmt.toLocaleString(['id'])}}</td>
+                </tr>
+                <tr>
+                    <td align="left" class="list-sub-title">{{item.inDescription}}</td>
+                    <td align="right" class="list-sub-title">{{item.inCreateAt | date:'dd MMM yyyy'}}</td>
+                </tr>
+            </table>
+        </div>
         <table width="100%" border="0" class="mt-5">
             <tr>
-                <td rowspan="2" valign="top" width="10%">
-                    <mat-icon style="color: green;">north_east</mat-icon>
-                </td>
-                <td align="left" class="list-title">{{item.categoryDescription}}</td>
-                <td align="right"  class="list-title">Rp. {{item.inAmt.toLocaleString(['id'])}}</td>
+                <td></td>
             </tr>
             <tr>
-                <td align="left" class="list-sub-title">{{item.inDescription}}</td>
-                <td align="right" class="list-sub-title">{{item.inCreateAt | date:'dd MMM yyyy'}}</td>
+                <td align="right" class="list-sub-title">
+                    <span routerLink="/cash-in" style="color: blue;">Lihat semua</span>
+                </td>
             </tr>
         </table>
     </div>
-    <table width="100%" border="0" class="mt-5">
-        <tr>
-            <td></td>
-        </tr>
-        <tr>
-            <td align="right" class="list-sub-title">
-                <span routerLink="/cash-in" style="color: blue;">Lihat semua</span>
-            </td>
-        </tr>
-    </table>
-</div>
 
-<div class="divider"></div>
+    <div class="divider"></div>
 
-<div class="sub-title">
-    Pengeluaran
-</div>
+    <div class="sub-title">
+        Pengeluaran
+    </div>
 
-<div class="mt-10">
-    <div *ngFor="let item of this.transactionOut">
+    <div class="mt-10">
+        <div *ngFor="let item of this.transactionOut">
+            <table width="100%" border="0" class="mt-5">
+                <tr>
+                    <td rowspan="2" valign="top" width="10%">
+                        <mat-icon color="warn">south_west</mat-icon>
+                    </td>
+                    <td align="left" class="list-title">{{item.categoryDescription}}</td>
+                    <td align="right"  class="list-title">Rp. {{item.outAmt.toLocaleString(['id'])}}</td>
+                </tr>
+                <tr>
+                    <td align="left" class="list-sub-title">{{item.outDescription}}</td>
+                    <td align="right" class="list-sub-title">{{item.outCreateAt | date:'dd MMM yyyy'}}</td>
+                </tr>
+            </table>
+        </div>
         <table width="100%" border="0" class="mt-5">
             <tr>
-                <td rowspan="2" valign="top" width="10%">
-                    <mat-icon color="warn">south_west</mat-icon>
-                </td>
-                <td align="left" class="list-title">{{item.categoryDescription}}</td>
-                <td align="right"  class="list-title">Rp. {{item.outAmt.toLocaleString(['id'])}}</td>
+                <td></td>
             </tr>
             <tr>
-                <td align="left" class="list-sub-title">{{item.outDescription}}</td>
-                <td align="right" class="list-sub-title">{{item.outCreateAt | date:'dd MMM yyyy'}}</td>
+                <td align="right" class="list-sub-title">
+                    <span routerLink="/cash-out" style="color: blue;">Lihat semua</span>
+                </td>
             </tr>
         </table>
     </div>
-    <table width="100%" border="0" class="mt-5">
-        <tr>
-            <td></td>
-        </tr>
-        <tr>
-            <td align="right" class="list-sub-title">
-                <span routerLink="/cash-out" style="color: blue;">Lihat semua</span>
-            </td>
-        </tr>
-    </table>
 </div>
 <div class="wrapper">
     <div class="navbar">

@@ -11,6 +11,7 @@ import { AddTransactionComponent } from '../add-transaction/add-transaction.comp
 export class HomeComponent implements OnInit {
 
     loading = true;
+    noData = true;
     totalSaldo = 0;
     transactionIn:Object;
     transactionOut:Object;
@@ -23,8 +24,10 @@ export class HomeComponent implements OnInit {
     async ngOnInit() {
         await this.rest.get_data_home().subscribe((data) => {
             if (data['success']){
-                if (data['data'][0].length == 0){
+                // console.log(data['data'][0][0]['totalSaldo'] )
+                if (data['data'][0][0]['totalSaldo'] === null){
                     this.loading = false;
+                    this.noData = false;
                 } else {
                     this.loading = false;
                     this.totalSaldo = data['data'][0][0]['totalSaldo'];

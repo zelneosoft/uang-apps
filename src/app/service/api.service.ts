@@ -34,14 +34,6 @@ export class ApiService {
         return this.http.get(`${this.link_url()}/uangku-category`,{ headers: this.getHeaders() });
     }
 
-    // get_category_in() {
-    //     return this.http.get(`${this.link_url()}/uangku-category/in`,{ headers: this.getHeaders() });
-    // }
-
-    // get_category_out() {
-    //     return this.http.get(`${this.link_url()}/uangku-category/out`,{ headers: this.getHeaders() });
-    // }
-
     save_category(data) {
         return this.http.post(`${this.link_url()}/uangku-category/insert`,data ,{ headers: this.getHeaders() });
     }
@@ -52,6 +44,10 @@ export class ApiService {
 
     delete_category(data) {
         return this.http.post(`${this.link_url()}/uangku-category/delete`,data ,{ headers: this.getHeaders() });
+    }
+
+    get_trans_in() {
+        return this.http.get(`${this.link_url()}/uangku-account/dashboard`,{ headers: this.getHeaders() });
     }
 
     save_transaction_in(data) {
