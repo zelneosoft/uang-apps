@@ -10,14 +10,47 @@ import { ApiService } from 'src/app/service/api.service';
 })
 export class DialogEditComponent implements OnInit {
 
+    kategori;
+    desc;
+    nominal;
+    result;
+    dataCategory: any;
+
     constructor(
         @Inject(MAT_DIALOG_DATA) public dataTransaction: any,
         public dialogRef: MatDialogRef<DialogEditComponent>,
         private _snackBar: MatSnackBar,
         private rest: ApiService,) { }
 
-    ngOnInit(): void {
-        console.log(this.dataTransaction)
+    async ngOnInit() {
+        console.log(this.dataTransaction['outAmt'])
+        this.nominal = this.dataTransaction['outAmt'];
+        this.result = this.dataTransaction['outAmt'];
+        try {
+            await this.rest.get_category().subscribe((data) => {
+                this.dataCategory = data['out'];
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    separatorProcess(): void {
+        if (this.nominal == null) {
+            this.nominal = 0
+        } else {
+            this.nominal = this.nominal
+        }
+        let numberVal = parseInt(this.nominal).toLocaleString();
+        this.result = numberVal;
+    }
+
+    delete() {
+
+    }
+
+    edit() {
+
     }
 
 }

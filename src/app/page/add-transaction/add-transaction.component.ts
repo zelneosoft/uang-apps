@@ -42,7 +42,6 @@ export class AddTransactionComponent implements OnInit {
     }
 
     separatorProcess(): void {
-        let tempNominal;
         if (this.nominal == null) {
             this.nominal = 0
         } else {
