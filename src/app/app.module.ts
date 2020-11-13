@@ -23,6 +23,8 @@ import { SettingModule } from './page/setting/setting.module';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AddTransactionComponent } from './page/add-transaction/add-transaction.component';
+import { CashInModule } from './page/cash-in/cash-in.module';
+import { CashOutModule } from './page/cash-out/cash-out.module';
 
 @NgModule({
     declarations: [
@@ -43,6 +45,8 @@ import { AddTransactionComponent } from './page/add-transaction/add-transaction.
         FormsModule,
         AuthModule,
         HomeModule,
+        CashInModule,
+        CashOutModule,
         ProfileModule,
         SettingModule,
         MatSnackBarModule

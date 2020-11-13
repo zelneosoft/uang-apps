@@ -25,6 +25,30 @@ const routes: Routes = [
         ]
     },
     {
+        path: 'cash-in',
+        component: ToolbarPageComponent,
+        data: { title: 'Pemasukan' },
+        children: [
+            {
+                path: '',
+                loadChildren: './page/cash-in/cash-in.module#CashInModule',
+                canActivate: [AuthService]
+            }
+        ]
+    },
+    {
+        path: 'cash-out',
+        component: ToolbarPageComponent,
+        data: { title: 'Pengeluaran' },
+        children: [
+            {
+                path: '',
+                loadChildren: './page/cash-out/cash-out.module#CashOutModule',
+                canActivate: [AuthService]
+            }
+        ]
+    },
+    {
         path: 'profile',
         component: ToolbarPageComponent,
         data: { title: 'Profil' },

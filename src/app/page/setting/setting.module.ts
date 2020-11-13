@@ -8,8 +8,6 @@ import { DialogCategoryAddComponent } from './category/dialog-category-add/dialo
 import { FormsModule } from '@angular/forms';
 import { DialogCategoryEditComponent } from './category/dialog-category-edit/dialog-category-edit.component';
 
-
-
 @NgModule({
     declarations: [MainSettingComponent, CategoryComponent, DialogCategoryAddComponent, DialogCategoryEditComponent],
     imports: [
