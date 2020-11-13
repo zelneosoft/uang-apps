@@ -3,6 +3,7 @@ import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-shee
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/service/api.service';
 import { Location } from '@angular/common';
+import { DialogEditComponent } from '../dialog-edit/dialog-edit.component';
 
 @Component({
     selector: 'app-cash-out',
@@ -22,24 +23,26 @@ export class CashOutComponent implements OnInit {
         ) 
     { }
 
-        async ngOnInit() {
-            await this.rest.get_trans_out().subscribe((data) => {
-                if (data['success']){
-                    console.log(data)
-                    this.loading = false;
-                    this.dataTransaction = data['data']
-                    // if (data['data'][0].length == 0){
-                    //     this.loading = false;
-                    // } else {
-                    //     this.loading = false;
-                    //     this.dataTransaction = data
-                        // this.totalSaldo = data['data'][0][0]['totalSaldo'];
-                        // this.transactionIn = data['data'][1];
-                        // this.transactionOut = data['data'][2];
-                    // }
-                }
-            });
-        }
+    async ngOnInit() {
+        await this.rest.get_trans_out().subscribe((data) => {
+            if (data['success']){
+                console.log(data)
+                this.loading = false;
+                this.dataTransaction = data['data']
+            }
+        });
+    }
+
+    openDialogEdit(arr) {
+        const dialogRef = this.dialog.open(DialogEditComponent, {
+            width: '400px',
+            data: arr,
+        });
+        dialogRef.afterClosed().subscribe(arr => {
+            this.loading = true;
+            this.ngOnInit();
+        });
+    }
 
     openBottomSheet(): void {
         this._bottomSheet.open(BottomSheetOverviewExampleSheet);
