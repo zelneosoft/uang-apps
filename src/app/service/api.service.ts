@@ -47,7 +47,7 @@ export class ApiService {
     }
 
     get_trans_in() {
-        return this.http.get(`${this.link_url()}/uangku-account/dashboard`,{ headers: this.getHeaders() });
+        return this.http.get(`${this.link_url()}/uangku-transaction/in`,{ headers: this.getHeaders() });
     }
 
     save_transaction_in(data) {

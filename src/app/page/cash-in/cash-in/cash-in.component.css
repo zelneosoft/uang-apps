@@ -1,0 +1,20 @@
+.alignleft {
+	float: left;
+}
+
+.alignright {
+	float: right;
+}
+
+.aligncenter {
+    text-align: center;
+    font-weight: bold;
+    line-height: 43px;
+}
+
+.crd-list{
+    border-left: 10px solid #358ccb;
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 10px;
+}

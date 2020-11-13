@@ -26,7 +26,7 @@ const routes: Routes = [
     },
     {
         path: 'cash-in',
-        component: ToolbarPageComponent,
+        // component: ToolbarPageComponent,
         data: { title: 'Pemasukan' },
         children: [
             {
@@ -38,7 +38,7 @@ const routes: Routes = [
     },
     {
         path: 'cash-out',
-        component: ToolbarPageComponent,
+        // component: ToolbarPageComponent,
         data: { title: 'Pengeluaran' },
         children: [
             {
