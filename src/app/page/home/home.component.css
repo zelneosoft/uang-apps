@@ -67,6 +67,7 @@
     z-index: 9;
     box-shadow: 0 5px 5px rgba(255, 147, 85, 0.35);
     transition: height 0.3s;
+    cursor: pointer;
 }
 
 .circle .plus-icon {

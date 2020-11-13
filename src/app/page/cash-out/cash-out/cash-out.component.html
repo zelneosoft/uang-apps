@@ -25,11 +25,11 @@
             <table width="100%" border="0">
                 <tr>
                     <td align="left" class="list-title">{{item.categoryDescription}}</td>
-                    <td align="right"  class="list-title">Rp. {{item.inAmt.toLocaleString(['id'])}}</td>
+                    <td align="right"  class="list-title">Rp. {{item.outAmt.toLocaleString(['id'])}}</td>
                 </tr>
                 <tr>
-                    <td align="left" class="list-sub-title">{{item.inDescription}}</td>
-                    <td align="right" class="list-sub-title">{{item.inCreateAt | date:'dd MMM yyyy'}}</td>
+                    <td align="left" class="list-sub-title">{{item.outDescription}}</td>
+                    <td align="right" class="list-sub-title">{{item.outCreateAt | date:'dd MMM yyyy'}}</td>
                 </tr>
             </table>
         </div>

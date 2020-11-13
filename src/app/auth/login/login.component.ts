@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
         window['googleSDKLoaded'] = () => {
             window['gapi'].load('auth2', () => {
                 this.auth2 = window['gapi'].auth2.init({
-                    client_id: '773848106670-o6nv5c0a1d6kvaj1vga8q2pv487oodtr.apps.googleusercontent.com',
+                    client_id: '53061255389-klc8do5ic85a785g4elv4ip15l3i8o6p.apps.googleusercontent.com',
                     // cookiepolicy: 'single_host_origin',
                     cookiepolicy: 'https://dazelpro.com/privacy',
                     scope: 'profile email'
