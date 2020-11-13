@@ -1,1 +1,37 @@
-<p>cash-out works!</p>
+<div class="loading" *ngIf="loading">
+    <mat-spinner style="margin:0 auto;"  mode="indeterminate"></mat-spinner>
+</div>
+<div class="mt-15">
+    <div class="alignleft">
+        <button mat-icon-button (click)="back()"><mat-icon>arrow_back</mat-icon></button>
+    </div>
+    <div class="alignright">
+        <button mat-icon-button (click)="openBottomSheet()"><mat-icon>sort</mat-icon></button>
+    </div>
+    <div class="aligncenter">
+        <p>Pengeluaran</p>
+    </div>
+</div>
+<table width="100%" border="0">
+    <tr>
+        <td>
+            <label style="font-size: 16px; font-weight: bold;">Histori Pengeluaran</label>
+        </td>
+    </tr>
+</table>
+<div class="mt-10">
+    <div *ngFor="let item of this.dataTransaction">
+        <div class="crd-list mt-10" matRipple>
+            <table width="100%" border="0">
+                <tr>
+                    <td align="left" class="list-title">{{item.categoryDescription}}</td>
+                    <td align="right"  class="list-title">Rp. {{item.inAmt.toLocaleString(['id'])}}</td>
+                </tr>
+                <tr>
+                    <td align="left" class="list-sub-title">{{item.inDescription}}</td>
+                    <td align="right" class="list-sub-title">{{item.inCreateAt | date:'dd MMM yyyy'}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

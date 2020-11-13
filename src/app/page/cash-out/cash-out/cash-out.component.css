@@ -1,0 +1,44 @@
+.alignleft {
+	float: left;
+}
+
+.alignright {
+	float: right;
+}
+
+.aligncenter {
+    text-align: center;
+    font-weight: bold;
+    line-height: 43px;
+}
+
+.crd-list{
+    border-left: 10px solid #358ccb;
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.title {
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.sub-title {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.list-title {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.list-sub-title {
+    margin-top: 10px;
+    font-size: 12px;
+    color: grey;
+}
