@@ -6,8 +6,8 @@
     <span style="color: grey;">Saldo anda saat ini</span>
     <h1 style="line-height: 0;">Rp. {{totalSaldo.toLocaleString(['id'])}}</h1>
 </div>
-<div *ngIf="!noData">
-    <p style="text-align: center;">Belum ada data transaksi</p>
+<div *ngIf="!noData" class="mt-50">
+    <p style="text-align: center;">😔 <br>Belum ada histori catatan keuangan</p>
 </div>
 <div *ngIf="noData">
     <div class="title">
@@ -17,8 +17,10 @@
     <div class="sub-title">
         Pemasukan
     </div>
-
-    <div class="mt-10">
+    <div *ngIf="!inData" class="mt-10">
+        <p style="text-align: center;">😔 <br>Belum ada catatan pemasukan</p>
+    </div>
+    <div *ngIf="inData" class="mt-10">
         <div *ngFor="let item of this.transactionIn">
             <table width="100%" border="0" class="mt-5">
                 <tr>
@@ -52,7 +54,11 @@
         Pengeluaran
     </div>
 
-    <div class="mt-10">
+    <div *ngIf="!outData" class="mt-10">
+        <p style="text-align: center;">😂 <br>Belum ada catatan pengeluaran</p>
+    </div>
+
+    <div *ngIf="outData" class="mt-10">
         <div *ngFor="let item of this.transactionOut">
             <table width="100%" border="0" class="mt-5">
                 <tr>
