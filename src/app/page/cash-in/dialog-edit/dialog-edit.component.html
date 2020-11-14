@@ -1,0 +1,30 @@
+<mat-form-field class="form-field">
+    <mat-label>Pilih kategori</mat-label>
+    <mat-select [(value)]="kategori" name="kategori" class="mat-select">
+        <mat-option *ngFor="let item of dataCategory" [value]="item.categoryID">
+            {{ item.categoryDescription }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+
+<mat-form-field class="form-field">
+    <mat-label>Deskripsi</mat-label>
+    <input matInput type="text" [(ngModel)]="desc" name="desc" autocomplete="off">
+</mat-form-field>
+
+<mat-form-field class="form-field">
+    <mat-label>Nominal</mat-label>
+    <input matInput type="number" [(ngModel)]="nominal" (input)="separatorProcess()" name="nominal" autocomplete="off">
+    <mat-hint>Rp. {{result}}</mat-hint>
+</mat-form-field>
+
+<table width="100%" class="mt-10">
+    <tr>
+        <td width="50%">
+            <button (click)="delete()" mat-stroked-button color="warn" class="btn-block">Hapus</button>
+        </td>
+        <td width="50%">
+            <button (click)="edit()" mat-stroked-button color="primary" class="btn-block">Perbarui</button>
+        </td>
+    </tr>
+</table>

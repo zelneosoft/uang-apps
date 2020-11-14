@@ -21,17 +21,18 @@ export class DialogEditComponent implements OnInit {
         @Inject(MAT_DIALOG_DATA) public dataTransaction: any,
         public dialogRef: MatDialogRef<DialogEditComponent>,
         private _snackBar: MatSnackBar,
-        private rest: ApiService,) { }
+        private rest: ApiService
+    ) { }
 
     async ngOnInit() {
-        this.id = this.dataTransaction.outID;
+        this.id = this.dataTransaction.inID;
         this.kategori = this.dataTransaction.categoryID;
-        this.desc = this.dataTransaction.outDescription;
-        this.nominal = this.dataTransaction.outAmt;
-        this.result = this.dataTransaction.outAmt;
+        this.desc = this.dataTransaction.inDescription;
+        this.nominal = this.dataTransaction.inAmt;
+        this.result = this.dataTransaction.inAmt;
         try {
             await this.rest.get_category().subscribe((data) => {
-                this.dataCategory = data['out'];
+                this.dataCategory = data['in'];
             })
         } catch (error) {
             console.log(error);
@@ -51,7 +52,7 @@ export class DialogEditComponent implements OnInit {
 
     async delete() {
         try {
-            await this.rest.delete_transaction_out({
+            await this.rest.delete_transaction_in({
                 id: this.id,
             }).subscribe(async (data)=>{
                 this._snackBar.open('Satu histori berhasil dihapus', 'Oke', {
