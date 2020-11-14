@@ -20,7 +20,7 @@
     </tr>
 </table>
 <div class="mt-10">
-    <div   div *ngFor="let item of this.dataTransaction | paginate: { itemsPerPage: 10, currentPage: p }">
+    <div   div *ngFor="let item of this.dataTransaction | paginate: { itemsPerPage: 5, currentPage: p }">
         <div class="crd-list mt-10" matRipple (click)="openDialogEdit(item)">
             <table width="100%" border="0">
                 <tr>
