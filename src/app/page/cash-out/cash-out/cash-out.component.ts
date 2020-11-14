@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { MatBottomSheet, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/service/api.service';
 import { Location } from '@angular/common';
@@ -8,7 +8,8 @@ import { DialogEditComponent } from '../dialog-edit/dialog-edit.component';
 @Component({
     selector: 'app-cash-out',
     templateUrl: './cash-out.component.html',
-    styleUrls: ['./cash-out.component.css']
+    styleUrls: ['./cash-out.component.css'],
+    encapsulation: ViewEncapsulation.None
 })
 export class CashOutComponent implements OnInit {
 
@@ -45,7 +46,12 @@ export class CashOutComponent implements OnInit {
     }
 
     openBottomSheet(): void {
-        this._bottomSheet.open(BottomSheetOverviewExampleSheet);
+        const btmSheet = this._bottomSheet.open(BottomSheetOverviewExampleSheet, {
+            data: { names: ['Frodo', 'Bilbo'] },
+        });
+        btmSheet.afterDismissed().subscribe((dataFromChild) => {
+            console.log(dataFromChild);
+        });
     }
 
     back() {
@@ -59,10 +65,25 @@ export class CashOutComponent implements OnInit {
     templateUrl: 'bottom-sheet.html',
 })
 export class BottomSheetOverviewExampleSheet {
-    constructor(private _bottomSheetRef: MatBottomSheetRef<BottomSheetOverviewExampleSheet>) {}
+
+    dataQ;
+    p: number = 1;
+
+    constructor(
+        private _bottomSheetRef: MatBottomSheetRef<BottomSheetOverviewExampleSheet>,
+        @Inject(MAT_BOTTOM_SHEET_DATA) public data: any
+    ) {
+        // console.log(data)
+        this.dataQ = data;
+    }
+
+    closeBottomSheet(){
+        //  pass the data to parent when bottom sheet closes.
+        this._bottomSheetRef.dismiss(this.data);
+    }
 
     openLink(event: MouseEvent): void {
-        this._bottomSheetRef.dismiss();
+        this._bottomSheetRef.dismiss(this.data);
         event.preventDefault();
     }
 }

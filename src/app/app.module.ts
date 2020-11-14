@@ -25,6 +25,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AddTransactionComponent } from './page/add-transaction/add-transaction.component';
 import { CashInModule } from './page/cash-in/cash-in.module';
 import { CashOutModule } from './page/cash-out/cash-out.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
     declarations: [
@@ -49,7 +50,8 @@ import { CashOutModule } from './page/cash-out/cash-out.module';
         CashOutModule,
         ProfileModule,
         SettingModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        NgxPaginationModule
     ],
     providers: [
         AuthService,

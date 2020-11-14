@@ -28,7 +28,8 @@ export class ToolbarPageComponent implements OnInit {
     }
 
     logout() {
-        this._location.back();
+        localStorage.clear();
+        window.location.replace('/login');
     }
 
 }

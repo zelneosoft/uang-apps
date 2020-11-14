@@ -42,3 +42,12 @@
     font-size: 12px;
     color: grey;
 }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.ngx-pagination {
+    padding-left: 0;
+}
