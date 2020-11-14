@@ -5,6 +5,7 @@ import { CashInRoutingModule } from './cash-in-routing.module';
 import { MaterialModule } from 'src/app/material.module';
 import { DialogEditComponent } from './dialog-edit/dialog-edit.component';
 import { FormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
     declarations: [CashInComponent, DialogEditComponent],
@@ -12,7 +13,8 @@ import { FormsModule } from '@angular/forms';
         CommonModule,
         CashInRoutingModule,
         MaterialModule,
-        FormsModule
+        FormsModule,
+        NgxPaginationModule
     ]
 })
 export class CashInModule { }

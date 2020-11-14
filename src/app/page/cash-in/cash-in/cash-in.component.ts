@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/service/api.service';
 import { Location } from '@angular/common';
@@ -8,12 +8,14 @@ import { DialogEditComponent } from '../dialog-edit/dialog-edit.component';
 @Component({
     selector: 'app-cash-in',
     templateUrl: './cash-in.component.html',
-    styleUrls: ['./cash-in.component.css']
+    styleUrls: ['./cash-in.component.css'],
+    encapsulation: ViewEncapsulation.None
 })
 export class CashInComponent implements OnInit {
 
     loading = true;
     dataTransaction:Object;
+    p: number = 1;
 
     constructor(
         public dialog: MatDialog,
