@@ -74,7 +74,7 @@ export class DialogEditComponent implements OnInit {
             });
         } else {
             try {
-                await this.rest.update_transaction_out({
+                await this.rest.update_transaction_in({
                     id: this.id,
                     idCategory: this.kategori,
                     desc: this.desc,
