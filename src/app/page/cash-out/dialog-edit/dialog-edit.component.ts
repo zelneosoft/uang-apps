@@ -10,8 +10,8 @@ import { ApiService } from 'src/app/service/api.service';
 })
 export class DialogEditComponent implements OnInit {
 
-    kategori;
-    desc;
+    kategori = '';
+    desc = '';
     nominal;
     result;
     dataCategory: any;
@@ -23,9 +23,11 @@ export class DialogEditComponent implements OnInit {
         private rest: ApiService,) { }
 
     async ngOnInit() {
-        console.log(this.dataTransaction['outAmt'])
-        this.nominal = this.dataTransaction['outAmt'];
-        this.result = this.dataTransaction['outAmt'];
+        this.kategori = this.dataTransaction.categoryID;
+        console.log(this.kategori)
+        this.desc = this.dataTransaction.outDescription;
+        this.nominal = this.dataTransaction.outAmt;
+        this.result = this.dataTransaction.outAmt;
         try {
             await this.rest.get_category().subscribe((data) => {
                 this.dataCategory = data['out'];
@@ -50,7 +52,7 @@ export class DialogEditComponent implements OnInit {
     }
 
     edit() {
-
+        console.log(this.kategori)
     }
 
 }

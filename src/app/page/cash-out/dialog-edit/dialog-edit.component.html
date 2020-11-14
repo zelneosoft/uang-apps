@@ -1,6 +1,6 @@
 <mat-form-field class="form-field">
     <mat-label>Pilih kategori</mat-label>
-    <mat-select [(ngModel)]="kategori" name="kategori" class="mat-select">
+    <mat-select [(value)]="kategori" name="kategori" class="mat-select">
         <mat-option *ngFor="let item of dataCategory" [value]="item.categoryID">
             {{ item.categoryDescription }}
         </mat-option>
