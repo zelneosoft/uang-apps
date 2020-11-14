@@ -62,4 +62,12 @@ export class ApiService {
         return this.http.post(`${this.link_url()}/uangku-transaction/insert-out`,data ,{ headers: this.getHeaders() });
     }
 
+    update_transaction_in(data) {
+        return this.http.post(`${this.link_url()}/uangku-transaction/update-in`,data ,{ headers: this.getHeaders() });
+    }
+
+    update_transaction_out(data) {
+        return this.http.post(`${this.link_url()}/uangku-transaction/update-out`,data ,{ headers: this.getHeaders() });
+    }
+
 }

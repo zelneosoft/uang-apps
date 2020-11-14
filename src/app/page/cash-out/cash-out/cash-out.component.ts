@@ -26,7 +26,7 @@ export class CashOutComponent implements OnInit {
     async ngOnInit() {
         await this.rest.get_trans_out().subscribe((data) => {
             if (data['success']){
-                console.log(data)
+                // console.log(data)
                 this.loading = false;
                 this.dataTransaction = data['data']
             }

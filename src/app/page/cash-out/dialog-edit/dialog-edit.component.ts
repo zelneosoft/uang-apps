@@ -10,6 +10,7 @@ import { ApiService } from 'src/app/service/api.service';
 })
 export class DialogEditComponent implements OnInit {
 
+    id;
     kategori = '';
     desc = '';
     nominal;
@@ -23,8 +24,8 @@ export class DialogEditComponent implements OnInit {
         private rest: ApiService,) { }
 
     async ngOnInit() {
+        this.id = this.dataTransaction.outID;
         this.kategori = this.dataTransaction.categoryID;
-        console.log(this.kategori)
         this.desc = this.dataTransaction.outDescription;
         this.nominal = this.dataTransaction.outAmt;
         this.result = this.dataTransaction.outAmt;
@@ -51,8 +52,30 @@ export class DialogEditComponent implements OnInit {
 
     }
 
-    edit() {
-        console.log(this.kategori)
+    async edit() {
+        if (this.kategori == "" || this.desc == "" || this.nominal == "" || this.nominal == 0) {
+            this._snackBar.open('Kolom isian harus terisi', 'Oke', {
+                duration: 4000,
+                panelClass: ['mat-snackbar', 'mat-primary']
+            });
+        } else {
+            try {
+                await this.rest.update_transaction_out({
+                    id: this.id,
+                    idCategory: this.kategori,
+                    desc: this.desc,
+                    amt: this.nominal
+                }).subscribe(async (data)=>{
+                    this._snackBar.open('Berhasil diperbarui', 'Oke', {
+                        duration: 4000,
+                        panelClass: ['mat-snackbar', 'mat-primary']
+                    });
+                }); 
+            } catch (error) {
+                console.log(error);
+            }
+            this.dialogRef.close();
+        }
     }
 
 }
