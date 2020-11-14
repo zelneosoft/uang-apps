@@ -70,4 +70,12 @@ export class ApiService {
         return this.http.post(`${this.link_url()}/uangku-transaction/update-out`,data ,{ headers: this.getHeaders() });
     }
 
+    delete_transaction_in(data) {
+        return this.http.post(`${this.link_url()}/uangku-transaction/delete-in`,data ,{ headers: this.getHeaders() });
+    }
+
+    delete_transaction_out(data) {
+        return this.http.post(`${this.link_url()}/uangku-transaction/delete-out`,data ,{ headers: this.getHeaders() });
+    }
+
 }

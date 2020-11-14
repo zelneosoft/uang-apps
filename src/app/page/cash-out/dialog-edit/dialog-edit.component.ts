@@ -48,8 +48,20 @@ export class DialogEditComponent implements OnInit {
         this.result = numberVal;
     }
 
-    delete() {
-
+    async delete() {
+        try {
+            await this.rest.delete_transaction_out({
+                id: this.id,
+            }).subscribe(async (data)=>{
+                this._snackBar.open('Satu histori berhasil dihapus', 'Oke', {
+                    duration: 2000,
+                    panelClass: ['mat-snackbar', 'mat-primary']
+                });
+            }); 
+        } catch (error) {
+            console.log(error);
+        }
+        this.dialogRef.close();
     }
 
     async edit() {
@@ -67,7 +79,7 @@ export class DialogEditComponent implements OnInit {
                     amt: this.nominal
                 }).subscribe(async (data)=>{
                     this._snackBar.open('Berhasil diperbarui', 'Oke', {
-                        duration: 4000,
+                        duration: 2000,
                         panelClass: ['mat-snackbar', 'mat-primary']
                     });
                 }); 
