@@ -51,7 +51,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
         ProfileModule,
         SettingModule,
         MatSnackBarModule,
-        NgxPaginationModule
+        // NgxPaginationModule
     ],
     providers: [
         AuthService,

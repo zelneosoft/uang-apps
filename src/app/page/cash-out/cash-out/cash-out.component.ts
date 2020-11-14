@@ -9,12 +9,13 @@ import { DialogEditComponent } from '../dialog-edit/dialog-edit.component';
     selector: 'app-cash-out',
     templateUrl: './cash-out.component.html',
     styleUrls: ['./cash-out.component.css'],
-    encapsulation: ViewEncapsulation.None
+    // encapsulation: ViewEncapsulation.None
 })
 export class CashOutComponent implements OnInit {
 
     loading = true;
     dataTransaction:Object;
+    p: number = 1;
     
     constructor(
         public dialog: MatDialog,
@@ -67,7 +68,6 @@ export class CashOutComponent implements OnInit {
 export class BottomSheetOverviewExampleSheet {
 
     dataQ;
-    p: number = 1;
 
     constructor(
         private _bottomSheetRef: MatBottomSheetRef<BottomSheetOverviewExampleSheet>,
