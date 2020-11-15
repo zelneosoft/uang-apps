@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -6,7 +7,8 @@ import { ApiService } from 'src/app/service/api.service';
 @Component({
     selector: 'app-dialog-edit',
     templateUrl: './dialog-edit.component.html',
-    styleUrls: ['./dialog-edit.component.css']
+    styleUrls: ['./dialog-edit.component.css'],
+    providers: [DatePipe]
 })
 export class DialogEditComponent implements OnInit {
 
@@ -16,19 +18,24 @@ export class DialogEditComponent implements OnInit {
     nominal;
     result;
     dataCategory: any;
+    date;
 
     constructor(
         @Inject(MAT_DIALOG_DATA) public dataTransaction: any,
         public dialogRef: MatDialogRef<DialogEditComponent>,
         private _snackBar: MatSnackBar,
-        private rest: ApiService,) { }
+        private rest: ApiService,
+        public datepipe: DatePipe
+    ) { }
 
     async ngOnInit() {
+        console.log(this.dataTransaction)
         this.id = this.dataTransaction.outID;
         this.kategori = this.dataTransaction.categoryID;
         this.desc = this.dataTransaction.outDescription;
         this.nominal = this.dataTransaction.outAmt;
         this.result = this.dataTransaction.outAmt;
+        this.date = this.datepipe.transform(this.dataTransaction.outCreateAt, 'yyyy-MM-dd');
         try {
             await this.rest.get_category().subscribe((data) => {
                 this.dataCategory = data['out'];
@@ -66,6 +73,7 @@ export class DialogEditComponent implements OnInit {
     }
 
     async edit() {
+        let ii = this.datepipe.transform(this.date, 'yyyy-MM-dd h:mm:ss', 'GMT+1');
         if (this.kategori == "" || this.desc == "" || this.nominal == "" || this.nominal == 0) {
             this._snackBar.open('Kolom isian harus terisi', 'Oke', {
                 duration: 4000,
@@ -77,8 +85,10 @@ export class DialogEditComponent implements OnInit {
                     id: this.id,
                     idCategory: this.kategori,
                     desc: this.desc,
-                    amt: this.nominal
+                    amt: this.nominal,
+                    date: ii,
                 }).subscribe(async (data)=>{
+                    console.log(data)
                     this._snackBar.open('Berhasil diperbarui', 'Oke', {
                         duration: 2000,
                         panelClass: ['mat-snackbar', 'mat-primary']
