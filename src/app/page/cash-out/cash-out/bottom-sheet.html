@@ -1,3 +1,43 @@
-<div (click)="closeBottomSheet()">
-    WOY
+<div class="btm-content">
+    <div class="title">
+        <p>Filter</p>
+    </div>
+    <table width="100%">
+        <tr>
+            <td width="50%">
+                <button mat-button class="chips" (click)="closeBottomSheet(0)">Hari ini</button>
+            </td>
+            <td width="50%">
+                <button mat-button class="chips" (click)="closeBottomSheet(1)">Minggu ini</button>
+            </td>
+        </tr>
+        <tr>
+            <td width="50%">
+                <button mat-button class="chips" (click)="closeBottomSheet(2)">Bulan ini</button>
+            </td>
+            <td width="50%">
+                <button mat-button class="chips" (click)="closeBottomSheet(3)">Semua</button>
+            </td>
+        </tr>
+    </table>
 </div>
+
+<style>
+    .btm-content {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .title {
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .chips {
+        width: 100%;
+        height: 50px;
+        border: 2px solid #2492F4;
+        border-color: #2492F4;
+        border-radius: 15px;
+        background-color: transparent;
+    }
+</style>

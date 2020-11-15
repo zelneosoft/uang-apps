@@ -73,7 +73,7 @@ export class DialogEditComponent implements OnInit {
     }
 
     async edit() {
-        let ii = this.datepipe.transform(this.date, 'yyyy-MM-dd h:mm:ss', 'GMT+1');
+        let dateEdit = this.datepipe.transform(this.date, 'yyyy-MM-dd h:mm:ss', 'GMT+1');
         if (this.kategori == "" || this.desc == "" || this.nominal == "" || this.nominal == 0) {
             this._snackBar.open('Kolom isian harus terisi', 'Oke', {
                 duration: 4000,
@@ -86,7 +86,7 @@ export class DialogEditComponent implements OnInit {
                     idCategory: this.kategori,
                     desc: this.desc,
                     amt: this.nominal,
-                    date: ii,
+                    date: dateEdit,
                 }).subscribe(async (data)=>{
                     console.log(data)
                     this._snackBar.open('Berhasil diperbarui', 'Oke', {

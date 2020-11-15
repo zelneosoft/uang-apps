@@ -16,6 +16,7 @@ export class CashOutComponent implements OnInit {
     loading = true;
     dataTransaction:Object;
     p: number = 1;
+    param = 0;
     
     constructor(
         public dialog: MatDialog,
@@ -26,9 +27,9 @@ export class CashOutComponent implements OnInit {
     { }
 
     async ngOnInit() {
-        await this.rest.get_trans_out().subscribe((data) => {
+        await this.rest.get_trans_out(this.param).subscribe((data) => {
             if (data['success']){
-                // console.log(data)
+                console.log(data)
                 this.loading = false;
                 this.dataTransaction = data['data']
             }
@@ -52,6 +53,9 @@ export class CashOutComponent implements OnInit {
         });
         btmSheet.afterDismissed().subscribe((dataFromChild) => {
             console.log(dataFromChild);
+            this.param = dataFromChild;
+            this.loading = true;
+            this.ngOnInit();
         });
     }
 
@@ -77,9 +81,8 @@ export class BottomSheetOverviewExampleSheet {
         this.dataQ = data;
     }
 
-    closeBottomSheet(){
-        //  pass the data to parent when bottom sheet closes.
-        this._bottomSheetRef.dismiss(this.data);
+    closeBottomSheet(arr){
+        this._bottomSheetRef.dismiss(arr);
     }
 
     openLink(event: MouseEvent): void {

@@ -50,8 +50,8 @@ export class ApiService {
         return this.http.get(`${this.link_url()}/uangku-transaction/in`,{ headers: this.getHeaders() });
     }
 
-    get_trans_out() {
-        return this.http.get(`${this.link_url()}/uangku-transaction/out`,{ headers: this.getHeaders() });
+    get_trans_out(param) {
+        return this.http.get(`${this.link_url()}/uangku-transaction/out/${param}`, { headers: this.getHeaders() });
     }
 
     save_transaction_in(data) {
