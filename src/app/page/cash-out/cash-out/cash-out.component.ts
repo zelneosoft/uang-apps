@@ -13,6 +13,7 @@ import { DialogEditComponent } from '../dialog-edit/dialog-edit.component';
 })
 export class CashOutComponent implements OnInit {
 
+    filterTitle;
     loading = true;
     dataTransaction:Object;
     p: number = 1;
@@ -29,9 +30,21 @@ export class CashOutComponent implements OnInit {
     async ngOnInit() {
         await this.rest.get_trans_out(this.param).subscribe((data) => {
             if (data['success']){
-                console.log(data)
+                // console.log(data)
+                if (this.param == 0){
+                    this.filterTitle = 'Hari ini'
+                }
+                if (this.param == 1){
+                    this.filterTitle = 'Minggu ini'
+                }
+                if (this.param == 2){
+                    this.filterTitle = 'Bulan ini'
+                }
+                if (this.param == 3){
+                    this.filterTitle = 'Semua'
+                }
                 this.loading = false;
-                this.dataTransaction = data['data']
+                this.dataTransaction = data['data'];
             }
         });
     }
@@ -49,13 +62,15 @@ export class CashOutComponent implements OnInit {
 
     openBottomSheet(): void {
         const btmSheet = this._bottomSheet.open(BottomSheetOverviewExampleSheet, {
-            data: { names: ['Frodo', 'Bilbo'] },
+            data: this.param,
         });
         btmSheet.afterDismissed().subscribe((dataFromChild) => {
-            console.log(dataFromChild);
-            this.param = dataFromChild;
-            this.loading = true;
-            this.ngOnInit();
+            // console.log(dataFromChild);
+            if (dataFromChild !== undefined){
+                this.param = dataFromChild;
+                this.loading = true;
+                this.ngOnInit();
+            }
         });
     }
 
@@ -71,14 +86,14 @@ export class CashOutComponent implements OnInit {
 })
 export class BottomSheetOverviewExampleSheet {
 
-    dataQ;
+    dataParam;
 
     constructor(
         private _bottomSheetRef: MatBottomSheetRef<BottomSheetOverviewExampleSheet>,
         @Inject(MAT_BOTTOM_SHEET_DATA) public data: any
     ) {
-        // console.log(data)
-        this.dataQ = data;
+        this.dataParam = data;
+        // console.log(this.dataParam)
     }
 
     closeBottomSheet(arr){

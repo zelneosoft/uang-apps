@@ -5,18 +5,22 @@
     <table width="100%">
         <tr>
             <td width="50%">
-                <button mat-button class="chips" (click)="closeBottomSheet(0)">Hari ini</button>
+                <button *ngIf="this.dataParam != 0" mat-button class="chips" (click)="closeBottomSheet(0)">Hari ini</button>
+                <button *ngIf="this.dataParam == 0" mat-button class="chips active" (click)="closeBottomSheet(0)">Hari ini</button>
             </td>
             <td width="50%">
-                <button mat-button class="chips" (click)="closeBottomSheet(1)">Minggu ini</button>
+                <button *ngIf="this.dataParam != 1" mat-button class="chips" (click)="closeBottomSheet(1)">Minggu ini</button>
+                <button *ngIf="this.dataParam == 1" mat-button class="chips active" (click)="closeBottomSheet(1)">Minggu ini</button>
             </td>
         </tr>
         <tr>
             <td width="50%">
-                <button mat-button class="chips" (click)="closeBottomSheet(2)">Bulan ini</button>
+                <button *ngIf="this.dataParam != 2" mat-button class="chips" (click)="closeBottomSheet(2)">Bulan ini</button>
+                <button *ngIf="this.dataParam == 2" mat-button class="chips active" (click)="closeBottomSheet(2)">Bulan ini</button>
             </td>
             <td width="50%">
-                <button mat-button class="chips" (click)="closeBottomSheet(3)">Semua</button>
+                <button *ngIf="this.dataParam != 3" mat-button class="chips" (click)="closeBottomSheet(3)">Semua</button>
+                <button *ngIf="this.dataParam == 3" mat-button class="chips active" (click)="closeBottomSheet(3)">Semua</button>
             </td>
         </tr>
     </table>
@@ -39,5 +43,13 @@
         border-color: #2492F4;
         border-radius: 15px;
         background-color: transparent;
+        color: black;
+        cursor: pointer;
+    }
+    .active {
+        border: 2px solid #2492F4;
+        border-color: #2492F4;
+        background-color: #2492F4;
+        color: white;
     }
 </style>
