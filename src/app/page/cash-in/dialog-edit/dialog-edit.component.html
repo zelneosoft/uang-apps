@@ -8,6 +8,11 @@
 </mat-form-field>
 
 <mat-form-field class="form-field">
+    <mat-label>Tanggal</mat-label>
+    <input matInput type="date" [(ngModel)]="date" name="date" value="{{date | date:'yyyy-MM-dd'}}" autocomplete="off">
+</mat-form-field>
+
+<mat-form-field class="form-field">
     <mat-label>Deskripsi</mat-label>
     <input matInput type="text" [(ngModel)]="desc" name="desc" autocomplete="off">
 </mat-form-field>

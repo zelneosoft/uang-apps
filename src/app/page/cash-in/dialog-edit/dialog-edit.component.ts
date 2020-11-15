@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -6,7 +7,8 @@ import { ApiService } from 'src/app/service/api.service';
 @Component({
     selector: 'app-dialog-edit',
     templateUrl: './dialog-edit.component.html',
-    styleUrls: ['./dialog-edit.component.css']
+    styleUrls: ['./dialog-edit.component.css'],
+    providers: [DatePipe]
 })
 export class DialogEditComponent implements OnInit {
 
@@ -16,12 +18,14 @@ export class DialogEditComponent implements OnInit {
     nominal;
     result;
     dataCategory: any;
+    date;
 
     constructor(
         @Inject(MAT_DIALOG_DATA) public dataTransaction: any,
         public dialogRef: MatDialogRef<DialogEditComponent>,
         private _snackBar: MatSnackBar,
-        private rest: ApiService
+        private rest: ApiService,
+        public datepipe: DatePipe
     ) { }
 
     async ngOnInit() {
@@ -30,6 +34,7 @@ export class DialogEditComponent implements OnInit {
         this.desc = this.dataTransaction.inDescription;
         this.nominal = this.dataTransaction.inAmt;
         this.result = this.dataTransaction.inAmt;
+        this.date = this.datepipe.transform(this.dataTransaction.inCreateAt, 'yyyy-MM-dd');
         try {
             await this.rest.get_category().subscribe((data) => {
                 this.dataCategory = data['in'];
@@ -67,6 +72,7 @@ export class DialogEditComponent implements OnInit {
     }
 
     async edit() {
+        let dateEdit = this.datepipe.transform(this.date, 'yyyy-MM-dd h:mm:ss', 'GMT+1');
         if (this.kategori == "" || this.desc == "" || this.nominal == "" || this.nominal == 0) {
             this._snackBar.open('Kolom isian harus terisi', 'Oke', {
                 duration: 4000,
@@ -78,7 +84,8 @@ export class DialogEditComponent implements OnInit {
                     id: this.id,
                     idCategory: this.kategori,
                     desc: this.desc,
-                    amt: this.nominal
+                    amt: this.nominal,
+                    date: dateEdit,
                 }).subscribe(async (data)=>{
                     this._snackBar.open('Berhasil diperbarui', 'Oke', {
                         duration: 2000,
