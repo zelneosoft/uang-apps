@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/service/api.service';
 import { Location } from '@angular/common';
-import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import { MatBottomSheet, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
 import { DialogEditComponent } from '../dialog-edit/dialog-edit.component';
 
 @Component({
@@ -13,9 +13,11 @@ import { DialogEditComponent } from '../dialog-edit/dialog-edit.component';
 })
 export class CashInComponent implements OnInit {
 
+    filterTitle;
     loading = true;
     dataTransaction:Object;
     p: number = 1;
+    param = 1;
 
     constructor(
         public dialog: MatDialog,
@@ -25,9 +27,21 @@ export class CashInComponent implements OnInit {
     ) { }
 
     async ngOnInit() {
-        await this.rest.get_trans_in().subscribe((data) => {
+        await this.rest.get_trans_in(this.param).subscribe((data) => {
             if (data['success']){
                 // console.log(data)
+                if (this.param == 0){
+                    this.filterTitle = 'Hari ini'
+                }
+                if (this.param == 1){
+                    this.filterTitle = 'Minggu ini'
+                }
+                if (this.param == 2){
+                    this.filterTitle = 'Bulan ini'
+                }
+                if (this.param == 3){
+                    this.filterTitle = 'Semua'
+                }
                 this.loading = false;
                 this.dataTransaction = data['data']
             }
@@ -46,7 +60,17 @@ export class CashInComponent implements OnInit {
     }
 
     openBottomSheet(): void {
-        this._bottomSheet.open(BottomSheetOverviewExampleSheet);
+        const btmSheet = this._bottomSheet.open(BottomSheetOverviewExampleSheet, {
+            data: this.param,
+        });
+        btmSheet.afterDismissed().subscribe((dataFromChild) => {
+            // console.log(dataFromChild);
+            if (dataFromChild !== undefined){
+                this.param = dataFromChild;
+                this.loading = true;
+                this.ngOnInit();
+            }
+        });
     }
 
     back() {
@@ -60,10 +84,17 @@ export class CashInComponent implements OnInit {
     templateUrl: 'bottom-sheet.html',
 })
 export class BottomSheetOverviewExampleSheet {
-    constructor(private _bottomSheetRef: MatBottomSheetRef<BottomSheetOverviewExampleSheet>) {}
 
-    openLink(event: MouseEvent): void {
-        this._bottomSheetRef.dismiss();
-        event.preventDefault();
+    dataParam;
+
+    constructor(
+        private _bottomSheetRef: MatBottomSheetRef<BottomSheetOverviewExampleSheet>,
+        @Inject(MAT_BOTTOM_SHEET_DATA) public data: any
+    ) {
+        this.dataParam = data;
+    }
+
+    closeBottomSheet(arr){
+        this._bottomSheetRef.dismiss(arr);
     }
 }

@@ -99,9 +99,4 @@ export class BottomSheetOverviewExampleSheet {
     closeBottomSheet(arr){
         this._bottomSheetRef.dismiss(arr);
     }
-
-    openLink(event: MouseEvent): void {
-        this._bottomSheetRef.dismiss(this.data);
-        event.preventDefault();
-    }
 }

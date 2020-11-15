@@ -46,8 +46,8 @@ export class ApiService {
         return this.http.post(`${this.link_url()}/uangku-category/delete`,data ,{ headers: this.getHeaders() });
     }
 
-    get_trans_in() {
-        return this.http.get(`${this.link_url()}/uangku-transaction/in`,{ headers: this.getHeaders() });
+    get_trans_in(param) {
+        return this.http.get(`${this.link_url()}/uangku-transaction/in/${param}`,{ headers: this.getHeaders() });
     }
 
     get_trans_out(param) {
