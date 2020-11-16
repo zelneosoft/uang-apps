@@ -1,1 +1,11 @@
-<p>profile works!</p>
+<div class="profile-content">
+    <div class="foto">
+        <img src="{{this.data['userPhoto']}}" style="width: 90px; border-radius: 50%;" alt="userImg">
+        <br>
+        <span class="mt-10" style="color: grey; font-size: 12px;">{{this.data['userEmail']}}</span>
+    </div>
+    <mat-form-field class="form-field">
+        <mat-label>Nama</mat-label>
+        <input matInput type="text" [(ngModel)]="nama" name="nama" autocomplete="off">
+    </mat-form-field>
+</div>

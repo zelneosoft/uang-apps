@@ -1,4 +1,7 @@
-<div class="content" matRipple>
+<div class="loading" *ngIf="loading">
+    <mat-spinner style="margin:0 auto;"  mode="indeterminate"></mat-spinner>
+</div>
+<div class="content" matRipple (click)="loadingSpinner()">
     <div class="google-btn" #openDialogGoogle>
         <div class="google-icon-wrapper">
             <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>

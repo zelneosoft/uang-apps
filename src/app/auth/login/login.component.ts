@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit {
     auth2: any;
     dataUser;
     link: string;
+    loading = false;
+
     @ViewChild('openDialogGoogle', {static: true }) loginElement: ElementRef;
     
     constructor(
@@ -27,6 +29,10 @@ export class LoginComponent implements OnInit {
 
     ngOnInit(): void {
         this.googleSDK();
+    }
+
+    loadingSpinner() {
+        this.loading = true
     }
 
     googleSDK() {
@@ -70,6 +76,7 @@ export class LoginComponent implements OnInit {
     }
 
     async login() {
+        this.loading = true;
         try {
             await this.rest.auth_user(this.dataUser).subscribe(async (data) => {
                 if (data["success"]) {
