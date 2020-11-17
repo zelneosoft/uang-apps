@@ -82,4 +82,8 @@ export class ApiService {
         return this.http.post(`${this.link_url()}/uangku-transaction/delete-out`,data ,{ headers: this.getHeaders() });
     }
 
+    get_data_report(param) {
+        return this.http.get(`${this.link_url()}/uangku-report/main/${param}`,{ headers: this.getHeaders() });
+    }
+
 }
