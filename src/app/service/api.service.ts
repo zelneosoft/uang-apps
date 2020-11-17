@@ -26,6 +26,10 @@ export class ApiService {
         return this.http.get(`${this.link_url()}/uangku-account`,{ headers: this.getHeaders() });
     }
 
+    edit_profile(data) {
+        return this.http.post(`${this.link_url()}/uangku-account/edit-profile`, data, { headers: this.getHeaders() });
+    }
+
     get_data_home() {
         return this.http.get(`${this.link_url()}/uangku-account/dashboard`,{ headers: this.getHeaders() });
     }

@@ -17,7 +17,7 @@ export class CashOutComponent implements OnInit {
     loading = true;
     dataTransaction:Object;
     p: number = 1;
-    param = 0;
+    param = 2;
     
     constructor(
         public dialog: MatDialog,

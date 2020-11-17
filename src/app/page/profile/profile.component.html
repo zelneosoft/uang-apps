@@ -1,11 +1,30 @@
+<div class="loading" *ngIf="loading">
+    <mat-spinner style="margin:0 auto;"  mode="indeterminate"></mat-spinner>
+</div>
 <div class="profile-content">
     <div class="foto">
-        <img src="{{this.data['userPhoto']}}" style="width: 90px; border-radius: 50%;" alt="userImg">
+        <img src="{{url}}" style="width: 90px; border-radius: 50%;" alt="userImg">
         <br>
-        <span class="mt-10" style="color: grey; font-size: 12px;">{{this.data['userEmail']}}</span>
+        <span class="mt-10" style="color: grey; font-size: 12px;">{{email}}</span>
     </div>
     <mat-form-field class="form-field">
         <mat-label>Nama</mat-label>
         <input matInput type="text" [(ngModel)]="nama" name="nama" autocomplete="off">
     </mat-form-field>
+    
+    <mat-form-field class="form-field">
+        <mat-label>Bio Singkat</mat-label>
+        <input matInput type="text" [(ngModel)]="bio" name="bio" autocomplete="off">
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+        <mat-label>Nomor Telpon</mat-label>
+        <input matInput type="text" [(ngModel)]="telp" name="telp" autocomplete="off">
+    </mat-form-field>
+
+    <div style="text-align: center;">
+        <button mat-button (click)="save()" class="btn-primary">
+            Perbarui
+        </button>
+    </div>
 </div>

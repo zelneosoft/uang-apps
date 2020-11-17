@@ -11,11 +11,11 @@ export class UserService {
     messageType = '';
     user: any   = {};
     keyUser     = '';
-    idUser      = '';
-    nameUser    = '';
-    emailUser   = '';
+
     userName    = '';
     userEmail   = '';
+    userBio   = '';
+    userPhone   = '';
     userPhoto   = '';
     token:any;
 
@@ -43,6 +43,8 @@ export class UserService {
                     this.user = data['user'];
                     this.userName = this.user['userName'];
                     this.userEmail = this.user['userEmail'];
+                    this.userBio = this.user['userBio'];
+                    this.userPhone = this.user['userPhone'];
                     this.userPhoto = this.user['userPhotoUrl'];
                     // this.nameUser = this.user['user_name'].replace(/\w\S*/g,function(txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
                     // this.keyUser = this.user['user_name'].toUpperCase().slice(0,1);
