@@ -13,6 +13,7 @@ export class MainReportComponent implements OnInit {
     totalIn;
     totalOut;
     param = 2;
+    title;
     categoryIn:Object;
     categoryOut:Object;
 
@@ -22,10 +23,22 @@ export class MainReportComponent implements OnInit {
     ) { }
 
     async ngOnInit() {
+        if (this.param == 0){
+            this.title = 'Hari ini'
+        }
+        if (this.param == 1){
+            this.title = 'Minggu ini'
+        }
+        if (this.param == 2){
+            this.title = 'Bulan ini'
+        }
+        if (this.param == 3){
+            this.title = 'Tahun ini'
+        }
         await this.rest.get_data_report(this.param).subscribe((data) => {
             if (data['success']){
                 this.loading = false;
-                console.log(data);
+                // console.log(data);
                 this.totalIn = data['data'][0][0]['totalIn'];
                 this.totalOut = data['data'][1][0]['totalOut'];
                 this.categoryIn = data['data'][2];
@@ -35,6 +48,7 @@ export class MainReportComponent implements OnInit {
     }
 
     filter(arr) {
+        this.loading = true;
         this.param = arr;
         this.ngOnInit();
     }

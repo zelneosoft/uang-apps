@@ -29,7 +29,7 @@ export class DialogEditComponent implements OnInit {
     ) { }
 
     async ngOnInit() {
-        console.log(this.dataTransaction)
+        // console.log(this.dataTransaction)
         this.id = this.dataTransaction.outID;
         this.kategori = this.dataTransaction.categoryID;
         this.desc = this.dataTransaction.outDescription;

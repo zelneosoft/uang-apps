@@ -21,14 +21,14 @@ export class ErrorComponent implements OnInit {
         switch (data["status"]) {
             case 500:
                 this.status = data["status"];
-                console.log(this.status);
+                // console.log(this.status);
                 this.logout();
                 window.location.replace('/');
                 break;
             
             default:
                 this.status = data["status"];
-                console.log(this.status);
+                // console.log(this.status);
                 break;
         }
         this.reason = data["reason"];
