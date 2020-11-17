@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MainSettingComponent } from './main-setting/main-setting.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CategoryComponent } from './category/category.component';
+import { PinComponent } from './pin/pin.component';
 
 const routes: Routes = [
     {
@@ -12,6 +13,10 @@ const routes: Routes = [
     {
         path: 'category',
         component: CategoryComponent
+    },
+    {
+        path: 'pin',
+        component: PinComponent
     }
 ];
 
