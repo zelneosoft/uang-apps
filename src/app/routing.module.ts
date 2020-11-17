@@ -74,7 +74,7 @@ const routes: Routes = [
     },
     {
         path: 'report',
-        component: ToolbarPageComponent,
+        // component: ToolbarPageComponent,
         data: { title: 'Laporan' },
         children: [
             {
