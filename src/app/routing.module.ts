@@ -72,6 +72,18 @@ const routes: Routes = [
             }
         ]
     },
+    {
+        path: 'report',
+        component: ToolbarPageComponent,
+        data: { title: 'Laporan' },
+        children: [
+            {
+                path: '',
+                loadChildren: './page/report/report.module#ReportModule',
+                canActivate: [AuthService]
+            }
+        ]
+    },
     { path: '**',   redirectTo: 'home' }
 
 ];
