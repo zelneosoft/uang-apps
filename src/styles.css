@@ -7,6 +7,9 @@ body {
 }
 
 body, 
+google-chart,
+mat-form-field,
+input,
 button,p,
 .menu-item, 
 .form-field, 
@@ -81,6 +84,10 @@ svg#clouds {
 
 .mt-15 {
     margin-top: 15px;
+}
+
+.mt-25 {
+    margin-top: 25px;
 }
 
 .mt-30 {

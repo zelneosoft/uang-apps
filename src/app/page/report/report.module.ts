@@ -4,6 +4,7 @@ import { MainReportComponent } from './main-report/main-report.component';
 import { MaterialModule } from 'src/app/material.module';
 import { FormsModule } from '@angular/forms';
 import { ReportRoutingModule } from './report-routing.module';
+import { GoogleChartsModule } from 'angular-google-charts';
 
 @NgModule({
     declarations: [MainReportComponent],
@@ -11,7 +12,8 @@ import { ReportRoutingModule } from './report-routing.module';
         CommonModule,
         ReportRoutingModule,
         MaterialModule,
-        FormsModule
+        FormsModule,
+        GoogleChartsModule
     ]
 })
 export class ReportModule { }
