@@ -1,1 +1,23 @@
-<p>grafik works!</p>
+<div class="loading" *ngIf="loading">
+    <mat-spinner style="margin:0 auto;"  mode="indeterminate"></mat-spinner>
+</div>
+<div class="mt-15">
+    <div class="alignleft">
+        <button mat-icon-button (click)="back()"><mat-icon>arrow_back</mat-icon></button>
+    </div>
+    <div class="alignright">
+        <button mat-icon-button [matMenuTriggerFor]="beforeMenu"><mat-icon>sort</mat-icon></button>
+    </div>
+    <div class="aligncenter">
+        <p>Grafik</p>
+    </div>
+</div>
+
+<mat-menu #beforeMenu="matMenu" xPosition="before">
+    <button class="menu-item" (click)="filter(0)" mat-menu-item>Hari ini</button>
+    <button class="menu-item" (click)="filter(1)" mat-menu-item>Minggu ini</button>
+    <button class="menu-item" (click)="filter(2)" mat-menu-item>Bulan ini</button>
+    <button class="menu-item" (click)="filter(3)" mat-menu-item>Tahun ini</button>
+    <!-- <button class="menu-item" (click)="filter(4)" mat-menu-item>Atur sendiri</button> -->
+</mat-menu>
+

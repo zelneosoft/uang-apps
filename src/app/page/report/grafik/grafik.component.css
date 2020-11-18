@@ -1,0 +1,13 @@
+.alignleft {
+	float: left;
+}
+
+.alignright {
+	float: right;
+}
+
+.aligncenter {
+    text-align: center;
+    font-weight: bold;
+    line-height: 43px;
+}

@@ -1,15 +1,29 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-grafik',
-  templateUrl: './grafik.component.html',
-  styleUrls: ['./grafik.component.css']
+    selector: 'app-grafik',
+    templateUrl: './grafik.component.html',
+    styleUrls: ['./grafik.component.css']
 })
 export class GrafikComponent implements OnInit {
 
-  constructor() { }
+    loading = true;
 
-  ngOnInit(): void {
-  }
+    constructor(
+        private _location: Location,
+    ) { }
+
+    async ngOnInit() {
+        this.loading = false
+    }
+
+    filter(arr) {
+
+    }
+
+    back() {
+        this._location.back();
+    }
 
 }
