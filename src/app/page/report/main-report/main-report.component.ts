@@ -16,17 +16,6 @@ export class MainReportComponent implements OnInit {
     title;
     categoryIn:Object;
     categoryOut:Object;
-    
-    type = 'PieChart';
-    data = [
-        ['Pemasukan', 3000000],
-        ['Pengeluaran', 1500000]
-    ];
-    option =  {
-        is3D: true,
-        'backgroundColor': 'transparent',
-        fontName: 'Quicksand'
-    };
 
     constructor(
         private _location: Location,

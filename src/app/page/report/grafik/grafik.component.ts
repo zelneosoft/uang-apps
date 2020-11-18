@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { ApiService } from 'src/app/service/api.service';
 
 @Component({
     selector: 'app-grafik',
@@ -9,17 +10,59 @@ import { Location } from '@angular/common';
 export class GrafikComponent implements OnInit {
 
     loading = true;
+    param = 2;
+    title;
+    totalIn;
+    totalOut;
+    type;
+    data;
+    option = {
+        colors: ['#2492F4', '#f44336'],
+        is3D: true,
+        'backgroundColor': 'transparent',
+        fontName: 'Quicksand',
+        fontSize: 14,
+        'width': '100%',
+        legend: 'none'
+    };
 
     constructor(
         private _location: Location,
+        private rest: ApiService,
     ) { }
 
     async ngOnInit() {
-        this.loading = false
+        if (this.param == 0){
+            this.title = 'Hari ini'
+        }
+        if (this.param == 1){
+            this.title = 'Minggu ini'
+        }
+        if (this.param == 2){
+            this.title = 'Bulan ini'
+        }
+        if (this.param == 3){
+            this.title = 'Tahun ini'
+        }
+        await this.rest.get_data_report(this.param).subscribe((data) => {
+            if (data['success']){
+                this.loading = false;
+                // console.log(data['data'][0][0]['totalIn']);
+                this.totalIn = data['data'][0][0]['totalIn'];
+                this.totalOut = data['data'][1][0]['totalOut'];
+                this.type = 'PieChart';
+                this.data = [
+                    ['Pemasukan', data['data'][0][0]['totalIn']],
+                    ['Pengeluaran', data['data'][1][0]['totalOut']]
+                ];
+            }
+        });
     }
 
     filter(arr) {
-
+        this.loading = true;
+        this.param = arr;
+        this.ngOnInit();
     }
 
     back() {

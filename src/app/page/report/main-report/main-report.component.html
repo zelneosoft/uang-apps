@@ -30,14 +30,14 @@
 <table width="100%" border="0">
     <tr>
         <td width="50%">
-            <div class="card-green">
+            <div class="card-green" matRipple routerLink="/cash-in">
                 <span style="font-size: 12px;">Pemasukan</span><br>
                 <span *ngIf="totalIn" style="font-size: 18px; font-weight: bold;">Rp. {{totalIn.toLocaleString(['id'])}}</span>
                 <span *ngIf="!totalIn" style="font-size: 18px; font-weight: bold;">Rp. 0</span>
             </div>
         </td>
         <td width="50%">
-            <div class="card-red">
+            <div class="card-red" matRipple routerLink="/cash-out">
                 <span style="font-size: 12px;">Pengeluaran</span><br>
                 <span *ngIf="totalOut" style="font-size: 18px; font-weight: bold;">Rp. {{totalOut.toLocaleString(['id'])}}</span>
                 <span *ngIf="!totalOut" style="font-size: 18px; font-weight: bold;">Rp. 0</span>

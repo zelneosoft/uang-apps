@@ -9,7 +9,7 @@
         <button mat-icon-button [matMenuTriggerFor]="beforeMenu"><mat-icon>sort</mat-icon></button>
     </div>
     <div class="aligncenter">
-        <p>Grafik</p>
+        <p>Grafik {{title}}</p>
     </div>
 </div>
 
@@ -18,6 +18,30 @@
     <button class="menu-item" (click)="filter(1)" mat-menu-item>Minggu ini</button>
     <button class="menu-item" (click)="filter(2)" mat-menu-item>Bulan ini</button>
     <button class="menu-item" (click)="filter(3)" mat-menu-item>Tahun ini</button>
-    <!-- <button class="menu-item" (click)="filter(4)" mat-menu-item>Atur sendiri</button> -->
 </mat-menu>
+
+<google-chart style="width: 100%;" #chart
+   [type]="type"
+   [data]="data"
+   [options]="option">
+</google-chart>
+
+<table width="100%" border="0">
+    <tr>
+        <td width="50%">
+            <div class="card-red">
+                <span style="font-size: 12px;">Pengeluaran</span><br>
+                <span *ngIf="totalOut" style="font-size: 18px; font-weight: bold;">Rp. {{totalOut.toLocaleString(['id'])}}</span>
+                <span *ngIf="!totalOut" style="font-size: 18px; font-weight: bold;">Rp. 0</span>
+            </div>
+        </td>
+        <td width="50%">
+            <div class="card-blue">
+                <span style="font-size: 12px;">Pemasukan</span><br>
+                <span *ngIf="totalIn" style="font-size: 18px; font-weight: bold;">Rp. {{totalIn.toLocaleString(['id'])}}</span>
+                <span *ngIf="!totalIn" style="font-size: 18px; font-weight: bold;">Rp. 0</span>
+            </div>
+        </td>
+    </tr>
+</table>
 
