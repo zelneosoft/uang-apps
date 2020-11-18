@@ -44,4 +44,21 @@
         </td>
     </tr>
 </table>
-
+<div class="divider"></div>
+<div style="text-align: center;" class="mt-25">
+    <span>Kategori Pemasukan</span>
+</div>
+<google-chart style="width: 100%;" #chart
+   [type]="typeBarIn"
+   [data]="dataBarIn"
+   [options]="optionBarIn">
+</google-chart>
+<div class="divider"></div>
+<div style="text-align: center;" class="mt-25">
+    <span>Kategori Pengeluaran</span>
+</div>
+<google-chart style="width: 100%;" #chart
+   [type]="typeBarOut"
+   [data]="dataBarOut"
+   [options]="optionBarOut">
+</google-chart>

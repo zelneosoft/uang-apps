@@ -14,6 +14,10 @@ export class GrafikComponent implements OnInit {
     title;
     totalIn;
     totalOut;
+    typeBarIn;
+    dataBarIn = [];
+    typeBarOut;
+    dataBarOut = [];
     type;
     data;
     option = {
@@ -23,6 +27,26 @@ export class GrafikComponent implements OnInit {
         fontName: 'Quicksand',
         fontSize: 14,
         'width': '100%',
+        legend: 'none'
+    };
+
+    optionBarIn = {
+        colors: ['#2492F4'],
+        forceIFrame: true,
+        'backgroundColor': 'transparent',
+        fontName: 'Quicksand',
+        fontSize: 14,
+        'width': '100%',
+        legend: 'none'
+    };
+
+    optionBarOut = {
+        colors: ['#f44336'],
+        forceIFrame: true,
+        'backgroundColor': 'transparent',
+        fontName: 'Quicksand',
+        fontSize: 12,
+        'width': 500,
         legend: 'none'
     };
 
@@ -47,7 +71,7 @@ export class GrafikComponent implements OnInit {
         await this.rest.get_data_report(this.param).subscribe((data) => {
             if (data['success']){
                 this.loading = false;
-                // console.log(data['data'][0][0]['totalIn']);
+                // console.log(data['data'][2]);
                 this.totalIn = data['data'][0][0]['totalIn'];
                 this.totalOut = data['data'][1][0]['totalOut'];
                 this.type = 'PieChart';
@@ -55,6 +79,16 @@ export class GrafikComponent implements OnInit {
                     ['Pemasukan', data['data'][0][0]['totalIn']],
                     ['Pengeluaran', data['data'][1][0]['totalOut']]
                 ];
+                this.typeBarIn = 'BarChart';
+                let catIn = data['data'][2]
+                catIn.forEach(async (item, index)=>{
+                    this.dataBarIn.push([item['categoryDescription'], item['total']])
+                })
+                this.typeBarOut = 'BarChart';
+                let catOut = data['data'][3]
+                catOut.forEach(async (item, index)=>{
+                    this.dataBarOut.push([item['categoryDescription'], item['total']])
+                })
             }
         });
     }
