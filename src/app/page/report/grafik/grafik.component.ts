@@ -14,10 +14,8 @@ export class GrafikComponent implements OnInit {
     title;
     totalIn;
     totalOut;
-    typeBarIn;
-    dataBarIn = [];
-    typeBarOut;
-    dataBarOut = [];
+    rinciIn;
+    rinciOut;
     type;
     data;
     option = {
@@ -30,25 +28,25 @@ export class GrafikComponent implements OnInit {
         legend: 'none'
     };
 
-    optionBarIn = {
-        colors: ['#2492F4'],
-        forceIFrame: true,
-        'backgroundColor': 'transparent',
-        fontName: 'Quicksand',
-        fontSize: 14,
-        'width': '100%',
-        legend: 'none'
-    };
+    // optionBarIn = {
+    //     colors: ['#2492F4'],
+    //     forceIFrame: true,
+    //     'backgroundColor': 'transparent',
+    //     fontName: 'Quicksand',
+    //     fontSize: 14,
+    //     'width': '100%',
+    //     legend: 'none'
+    // };
 
-    optionBarOut = {
-        colors: ['#f44336'],
-        forceIFrame: true,
-        'backgroundColor': 'transparent',
-        fontName: 'Quicksand',
-        fontSize: 12,
-        'width': 500,
-        legend: 'none'
-    };
+    // optionBarOut = {
+    //     colors: ['#f44336'],
+    //     forceIFrame: true,
+    //     'backgroundColor': 'transparent',
+    //     fontName: 'Quicksand',
+    //     fontSize: 12,
+    //     'width': 500,
+    //     legend: 'none'
+    // };
 
     constructor(
         private _location: Location,
@@ -71,24 +69,16 @@ export class GrafikComponent implements OnInit {
         await this.rest.get_data_report(this.param).subscribe((data) => {
             if (data['success']){
                 this.loading = false;
-                // console.log(data['data'][2]);
+                console.log(data['data']);
                 this.totalIn = data['data'][0][0]['totalIn'];
                 this.totalOut = data['data'][1][0]['totalOut'];
+                this.rinciIn = data['data'][4];
+                this.rinciOut = data['data'][5];
                 this.type = 'PieChart';
                 this.data = [
                     ['Pemasukan', data['data'][0][0]['totalIn']],
                     ['Pengeluaran', data['data'][1][0]['totalOut']]
                 ];
-                this.typeBarIn = 'BarChart';
-                let catIn = data['data'][2]
-                catIn.forEach(async (item, index)=>{
-                    this.dataBarIn.push([item['categoryDescription'], item['total']])
-                })
-                this.typeBarOut = 'BarChart';
-                let catOut = data['data'][3]
-                catOut.forEach(async (item, index)=>{
-                    this.dataBarOut.push([item['categoryDescription'], item['total']])
-                })
             }
         });
     }

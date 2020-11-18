@@ -46,19 +46,39 @@
 </table>
 <div class="divider"></div>
 <div style="text-align: center;" class="mt-25">
-    <span>Kategori Pemasukan</span>
+    <span style="font-weight: bold;">Rincian Pemasukan</span>
 </div>
-<google-chart style="width: 100%;" #chart
+<table width="100%" border="0" class="mt-10">
+    <tr *ngFor="let item of this.rinciIn">
+        <td align="left">
+            <label style="font-size: 14px;">{{item.inDescription}}</label>
+        </td>
+        <td align="right">
+            <label style="font-size: 14px; font-weight: 500;">{{item.total.toLocaleString(['id'])}}</label>
+        </td>
+    </tr>
+</table>
+<!-- <google-chart style="width: 100%;" #chart
    [type]="typeBarIn"
    [data]="dataBarIn"
    [options]="optionBarIn">
-</google-chart>
+</google-chart> -->
 <div class="divider"></div>
 <div style="text-align: center;" class="mt-25">
-    <span>Kategori Pengeluaran</span>
+    <span style="font-weight: bold;">Rincian Pengeluaran</span>
 </div>
-<google-chart style="width: 100%;" #chart
+<table width="100%" border="0" class="mt-10">
+    <tr *ngFor="let item of this.rinciOut">
+        <td align="left">
+            <label style="font-size: 14px;">{{item.outDescription}}</label>
+        </td>
+        <td align="right">
+            <label style="font-size: 14px; font-weight: 500;">{{item.total.toLocaleString(['id'])}}</label>
+        </td>
+    </tr>
+</table>
+<!-- <google-chart style="width: 100%;" #chart
    [type]="typeBarOut"
    [data]="dataBarOut"
    [options]="optionBarOut">
-</google-chart>
+</google-chart> -->
