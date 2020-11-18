@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { RouterOutlet } from '@angular/router';
+import { SwUpdate } from '@angular/service-worker';
 import { UserService } from './service/user.service';
 
 @Component({
@@ -12,9 +14,17 @@ export class AppComponent {
     title = 'uang-apps';
 
     constructor(
-        public data: UserService
+        public data: UserService,
+        private swUpdate: SwUpdate,
+        private _snackBar: MatSnackBar,
     ) {
         this.data.getProfile();
+        swUpdate.available.subscribe(event => {
+            const snack = this._snackBar.open("Versi terbaru telah tersedia","Update");
+            snack.onAction().subscribe(()=>{
+                window.location.reload();
+            })
+        });
     }
 
     prepareRoute(outlet: RouterOutlet) {
@@ -22,9 +32,4 @@ export class AppComponent {
           outlet.activatedRouteData && 
           outlet.activatedRouteData['animationState'];
     }
-
-    // logout(){
-    //     localStorage.clear();
-    //     window.location.replace('/login');
-    // }
 }

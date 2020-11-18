@@ -26,6 +26,9 @@ import { AddTransactionComponent } from './page/add-transaction/add-transaction.
 import { CashInModule } from './page/cash-in/cash-in.module';
 import { CashOutModule } from './page/cash-out/cash-out.module';
 import { ReportModule } from './page/report/report.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
     declarations: [
@@ -51,14 +54,16 @@ import { ReportModule } from './page/report/report.module';
         ProfileModule,
         SettingModule,
         ReportModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
     ],
     providers: [
         AuthService,
         ApiService,
         UserService,
         ErrorDialogService,
-        {provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true }
+        {provide: LocationStrategy, useClass: HashLocationStrategy},
+        {provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
     ],
     bootstrap: [AppComponent]
 })
