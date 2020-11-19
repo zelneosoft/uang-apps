@@ -37,7 +37,7 @@ export class DialogCategoryAddComponent implements OnInit {
             } catch (error) {
                 console.log(error);
             }
-            this.dialogRef.close();
+            this.dialogRef.close(true);
         }
     }
 
