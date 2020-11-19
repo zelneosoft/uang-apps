@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class MainReportComponent implements OnInit {
 
     loading = true;
+    noData = true;
     totalIn;
     totalOut;
     param = 2;
@@ -40,11 +41,14 @@ export class MainReportComponent implements OnInit {
         await this.rest.get_data_report(this.param).subscribe((data) => {
             if (data['success']){
                 this.loading = false;
-                // console.log(data);
+                // console.log(data['data']);
                 this.totalIn = data['data'][0][0]['totalIn'];
                 this.totalOut = data['data'][1][0]['totalOut'];
                 this.categoryIn = data['data'][2];
                 this.categoryOut = data['data'][3];
+                if (this.totalIn == 0 && this.totalOut == 0) {
+                    this.noData = false;
+                }
             }
         });
     }

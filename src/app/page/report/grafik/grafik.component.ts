@@ -69,7 +69,7 @@ export class GrafikComponent implements OnInit {
         await this.rest.get_data_report(this.param).subscribe((data) => {
             if (data['success']){
                 this.loading = false;
-                console.log(data['data']);
+                // console.log(data['data']);
                 this.totalIn = data['data'][0][0]['totalIn'];
                 this.totalOut = data['data'][1][0]['totalOut'];
                 this.rinciIn = data['data'][4];

@@ -27,82 +27,88 @@
    [options]="option">
 </google-chart> -->
 
-<table width="100%" border="0">
-    <tr>
-        <td width="50%">
-            <div class="card-green" matRipple routerLink="/cash-in">
-                <span style="font-size: 12px;">Pemasukan</span><br>
-                <span *ngIf="totalIn" style="font-size: 18px; font-weight: bold;">Rp. {{totalIn.toLocaleString(['id'])}}</span>
-                <span *ngIf="!totalIn" style="font-size: 18px; font-weight: bold;">Rp. 0</span>
-            </div>
-        </td>
-        <td width="50%">
-            <div class="card-red" matRipple routerLink="/cash-out">
-                <span style="font-size: 12px;">Pengeluaran</span><br>
-                <span *ngIf="totalOut" style="font-size: 18px; font-weight: bold;">Rp. {{totalOut.toLocaleString(['id'])}}</span>
-                <span *ngIf="!totalOut" style="font-size: 18px; font-weight: bold;">Rp. 0</span>
-            </div>
-        </td>
-    </tr>
-</table>
-
-<table width="100%" border="0" class="mt-15">
-    <tr>
-        <td align="left">
-            <label style="font-size: 16px; font-weight: bold;">Top Kategori Pemasukan</label>
-        </td>
-    </tr>
-</table>
-<table width="100%" border="0" class="mt-10">
-    <tr *ngFor="let item of this.categoryIn">
-        <td align="left">
-            <label style="font-size: 14px;">{{item.categoryDescription}}</label>
-        </td>
-        <td align="right">
-            <label style="font-size: 14px; font-weight: 500;">{{item.total.toLocaleString(['id'])}}</label>
-        </td>
-    </tr>
-</table>
-
-<table width="100%" border="0" class="mt-15">
-    <tr>
-        <td align="left">
-            <label style="font-size: 16px; font-weight: bold;">Top Kategori Pengeluaran</label>
-        </td>
-    </tr>
-</table>
-<table width="100%" border="0" class="mt-10">
-    <tr *ngFor="let item of this.categoryOut">
-        <td align="left">
-            <label style="font-size: 14px;">{{item.categoryDescription}}</label>
-        </td>
-        <td align="right">
-            <label style="font-size: 14px; font-weight: 500;">{{item.total.toLocaleString(['id'])}}</label>
-        </td>
-    </tr>
-</table>
-
-<div class="card-btn mt-25" matRipple routerLink="/report/chart">
-    <table width="100%">
-        <tr>
-            <td align="left" valign="middle">
-                <span style="font-size: 16px; font-weight: bold;">Laporan Grafik</span>
-            </td>
-            <td align="right" valign="middle">
-                <mat-icon color="primary">pie_chart</mat-icon>
-            </td>
-        </tr>
-    </table>
+<div *ngIf="!noData" class="mt-50">
+    <p style="text-align: center;">😔 <br>Belum ada laporan catatan keuangan</p>
 </div>
-<div class="card-btn mt-25" matRipple (click)="download()">
-    <table width="100%">
+
+<div *ngIf="noData">
+    <table width="100%" border="0">
         <tr>
-            <td align="left" valign="middle">
-                <span style="font-size: 16px; font-weight: bold;">Unduh Laporan</span>
+            <td width="50%">
+                <div class="card-green" matRipple routerLink="/cash-in">
+                    <span style="font-size: 12px;">Pemasukan</span><br>
+                    <span *ngIf="totalIn" style="font-size: 18px; font-weight: bold;">Rp. {{totalIn.toLocaleString(['id'])}}</span>
+                    <span *ngIf="!totalIn" style="font-size: 18px; font-weight: bold;">Rp. 0</span>
+                </div>
             </td>
-            <td align="right" valign="middle">
-                <mat-icon color="primary">cloud_download</mat-icon>
+            <td width="50%">
+                <div class="card-red" matRipple routerLink="/cash-out">
+                    <span style="font-size: 12px;">Pengeluaran</span><br>
+                    <span *ngIf="totalOut" style="font-size: 18px; font-weight: bold;">Rp. {{totalOut.toLocaleString(['id'])}}</span>
+                    <span *ngIf="!totalOut" style="font-size: 18px; font-weight: bold;">Rp. 0</span>
+                </div>
             </td>
         </tr>
     </table>
+
+    <table width="100%" border="0" class="mt-15">
+        <tr>
+            <td align="left">
+                <label style="font-size: 16px; font-weight: bold;">Top Kategori Pemasukan</label>
+            </td>
+        </tr>
+    </table>
+    <table width="100%" border="0" class="mt-10">
+        <tr *ngFor="let item of this.categoryIn">
+            <td align="left">
+                <label style="font-size: 14px;">{{item.categoryDescription}}</label>
+            </td>
+            <td align="right">
+                <label style="font-size: 14px; font-weight: 500;">{{item.total.toLocaleString(['id'])}}</label>
+            </td>
+        </tr>
+    </table>
+
+    <table width="100%" border="0" class="mt-15">
+        <tr>
+            <td align="left">
+                <label style="font-size: 16px; font-weight: bold;">Top Kategori Pengeluaran</label>
+            </td>
+        </tr>
+    </table>
+    <table width="100%" border="0" class="mt-10">
+        <tr *ngFor="let item of this.categoryOut">
+            <td align="left">
+                <label style="font-size: 14px;">{{item.categoryDescription}}</label>
+            </td>
+            <td align="right">
+                <label style="font-size: 14px; font-weight: 500;">{{item.total.toLocaleString(['id'])}}</label>
+            </td>
+        </tr>
+    </table>
+
+    <div class="card-btn mt-25" matRipple routerLink="/report/chart">
+        <table width="100%">
+            <tr>
+                <td align="left" valign="middle">
+                    <span style="font-size: 16px; font-weight: bold;">Laporan Grafik</span>
+                </td>
+                <td align="right" valign="middle">
+                    <mat-icon color="primary">pie_chart</mat-icon>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card-btn mt-25" matRipple (click)="download()">
+        <table width="100%">
+            <tr>
+                <td align="left" valign="middle">
+                    <span style="font-size: 16px; font-weight: bold;">Unduh Laporan</span>
+                </td>
+                <td align="right" valign="middle">
+                    <mat-icon color="primary">cloud_download</mat-icon>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
