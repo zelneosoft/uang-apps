@@ -68,7 +68,7 @@ export class DialogEditComponent implements OnInit {
         } catch (error) {
             console.log(error);
         }
-        this.dialogRef.close();
+        this.dialogRef.close(true);
     }
 
     async edit() {
@@ -95,7 +95,7 @@ export class DialogEditComponent implements OnInit {
             } catch (error) {
                 console.log(error);
             }
-            this.dialogRef.close();
+            this.dialogRef.close(true);
         }
     }
 

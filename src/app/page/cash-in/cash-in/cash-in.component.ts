@@ -54,8 +54,10 @@ export class CashInComponent implements OnInit {
             data: arr,
         });
         dialogRef.afterClosed().subscribe(arr => {
-            this.loading = true;
-            this.ngOnInit();
+            if (arr == true) {
+                this.loading = true;
+                this.ngOnInit();
+            }
         });
     }
 
