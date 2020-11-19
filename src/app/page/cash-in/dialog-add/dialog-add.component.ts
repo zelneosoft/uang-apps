@@ -46,34 +46,34 @@ export class DialogAddComponent implements OnInit {
     }
 
     async save() {
-        if (this.tipe == "" || this.kategori == "" || this.desc == "" || this.nominal == "" || this.nominal == null || this.nominal == 0) {
+        if (this.kategori == "" || this.desc == "" || this.nominal == "" || this.nominal == null || this.nominal == 0) {
             this._snackBar.open('Kolom isian harus terisi semua', 'Oke', {
                 duration: 4000,
                 panelClass: ['mat-snackbar', 'mat-primary']
             });
         } else {
-            if (this.tipe == 0) {
-                try {
-                    await this.rest.save_transaction_in({
-                        idCategory: this.kategori,
-                        desc: this.desc,
-                        amt: this.nominal
-                    }).subscribe(async (data)=>{}); 
-                } catch (error) {
-                    console.log(error);
-                }
-                this.dialogRef.close(true);
-            } else {
-                try {
-                    await this.rest.save_transaction_out({
-                        idCategory: this.kategori,
-                        desc: this.desc,                    
-                        amt: this.nominal
-                    }).subscribe(async (data)=>{}); 
-                } catch (error) {
-                    console.log(error);
-                }
-                this.dialogRef.close(true);
+            try {
+                await this.rest.save_transaction_in({
+                    idCategory: this.kategori,
+                    desc: this.desc,
+                    amt: this.nominal
+                }).subscribe(async (data)=>{
+                    if (data['success']) {
+                        this._snackBar.open('Berhasil.', 'Oke', {
+                            duration: 4000,
+                            panelClass: ['mat-snackbar', 'mat-primary']
+                        });
+                        this.dialogRef.close(true);
+                    } else {
+                        this._snackBar.open('Gagal, terdapat kesalahan', 'Oke', {
+                            duration: 4000,
+                            panelClass: ['mat-snackbar', 'mat-primary']
+                        });
+                        this.dialogRef.close();
+                    }
+                }); 
+            } catch (error) {
+                console.log(error);
             }
         }
     }
