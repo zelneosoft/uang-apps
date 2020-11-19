@@ -51,3 +51,121 @@
 .ngx-pagination {
     padding-left: 0;
 }
+
+
+/* BOTTOM NAV */
+.wrapper {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%, 0) !important;
+}
+.navbar {
+    position: relative;
+    height: 70px;
+    min-width: 250px;
+    padding-left: 35px;
+    padding-right: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 25px;
+    background-color: white;
+    box-shadow: 0 10px 20px rgba(82, 74, 74, 0.3);
+}
+
+.circle {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) !important;
+    bottom: calc(100px - 90px);
+    margin-bottom: 0;
+    height: 50px;
+    width: 50px;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color:#2492F4;
+    z-index: 9;
+    box-shadow: 0 5px 5px rgba(255, 147, 85, 0.35);
+    transition: height 0.3s;
+    cursor: pointer;
+}
+
+.circle .plus-icon {
+    color: white;
+    font-size: 27px;
+    transition: opacity 0.3s, transform 0.2s;
+}
+
+.circle:hover .plus-icon {
+    transform: rotate(360deg);
+}
+
+.circle .social {
+    position: absolute;
+    top: 195px;
+    color: white;
+    background-color: rgba(255, 212, 212, 0.308);
+    height: 60px;
+    width: 60px;
+    margin-bottom: 5px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.circle .social:nth-child(2) {
+    opacity: 0;
+    transition: opacity 0.3s, top 0.5s ease;
+}
+
+.circle .social:nth-child(3) {
+    opacity: 0;
+    transition: opacity 0.3s, top 0.5s 0.1s ease;
+}
+
+.circle .social:nth-child(4) {
+    opacity: 0;
+    transition: opacity 0.3s, top 0.5s 0.22s ease;
+    margin-bottom: 0px;
+}
+
+.circle:hover .social:nth-child(2) {
+    opacity: 1;
+    top: 5px;
+}
+
+.circle:hover .social:nth-child(3) {
+    opacity: 1;
+    top: calc(5px + 60px + 5px);
+}
+
+.circle:hover .social:nth-child(4) {
+    opacity: 1;
+    top: calc(5px + 60px + 5px + 60px + 5px);
+}
+
+.circleBackground {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: calc(100px - 100px / 2);
+    margin-bottom: 0;
+    height: calc(80px + 20px);
+    width: calc(80px + 20px);
+    border-radius: calc(100px / 2);
+}
+
+.icon-home,
+.icon-account {
+    font-size: 10px;
+    color: #bbb6b8;
+}
+/* END */
