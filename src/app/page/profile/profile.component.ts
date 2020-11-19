@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiService } from 'src/app/service/api.service';
 import { UserService } from 'src/app/service/user.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-profile',
@@ -16,11 +17,14 @@ export class ProfileComponent implements OnInit {
     bio;
     telp;
     loading = true;
+    versi
 
     constructor(
         private _snackBar: MatSnackBar,
         private rest: ApiService,
-    ) {}
+    ) {
+        this.versi = environment.versiApp;
+    }
 
     async ngOnInit() {
         await this.rest.get_profile().subscribe((data) => {
