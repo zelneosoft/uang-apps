@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/service/api.service';
 import { Location } from '@angular/common';
 import { MatBottomSheet, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
 import { DialogEditComponent } from '../dialog-edit/dialog-edit.component';
+import { DialogAddComponent } from '../dialog-add/dialog-add.component';
 
 @Component({
     selector: 'app-cash-in',
@@ -44,6 +45,18 @@ export class CashInComponent implements OnInit {
                 }
                 this.loading = false;
                 this.dataTransaction = data['data']
+            }
+        });
+    }
+
+    openDialogAdd() {
+        const dialogRef = this.dialog.open(DialogAddComponent, {
+            width: '400px'
+        });
+        dialogRef.afterClosed().subscribe(arr => {
+            if (arr == true) {
+                this.loading = true;
+                this.ngOnInit();
             }
         });
     }
