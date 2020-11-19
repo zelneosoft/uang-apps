@@ -8,9 +8,10 @@ import { DialogCategoryAddComponent } from './category/dialog-category-add/dialo
 import { FormsModule } from '@angular/forms';
 import { DialogCategoryEditComponent } from './category/dialog-category-edit/dialog-category-edit.component';
 import { PinComponent } from './pin/pin.component';
+import { DialogAboutComponent } from './dialog-about/dialog-about.component';
 
 @NgModule({
-    declarations: [MainSettingComponent, CategoryComponent, DialogCategoryAddComponent, DialogCategoryEditComponent, PinComponent],
+    declarations: [MainSettingComponent, CategoryComponent, DialogCategoryAddComponent, DialogCategoryEditComponent, PinComponent, DialogAboutComponent],
     imports: [
         CommonModule,
         SettingRoutingModule,
