@@ -12,6 +12,7 @@ import { ApiService } from 'src/app/service/api.service';
 })
 export class DialogEditComponent implements OnInit {
 
+    loading = true;
     id;
     kategori = '';
     desc = '';
@@ -38,6 +39,7 @@ export class DialogEditComponent implements OnInit {
         this.date = this.datepipe.transform(this.dataTransaction.outCreateAt, 'yyyy-MM-dd');
         try {
             await this.rest.get_category().subscribe((data) => {
+                this.loading = false;
                 this.dataCategory = data['out'];
             })
         } catch (error) {
