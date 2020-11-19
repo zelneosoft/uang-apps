@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ApiService } from 'src/app/service/api.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-main-report',
@@ -20,6 +21,7 @@ export class MainReportComponent implements OnInit {
     constructor(
         private _location: Location,
         private rest: ApiService,
+        private _snackBar: MatSnackBar,
     ) { }
 
     async ngOnInit() {
@@ -51,6 +53,13 @@ export class MainReportComponent implements OnInit {
         this.loading = true;
         this.param = arr;
         this.ngOnInit();
+    }
+
+    download() {
+        this._snackBar.open('Fitur belum tersedia', 'Oke', {
+            duration: 2000,
+            panelClass: ['mat-snackbar', 'mat-primary']
+        });
     }
 
     back() {
