@@ -6,9 +6,10 @@ import { MaterialModule } from 'src/app/material.module';
 import { DialogEditComponent } from './dialog-edit/dialog-edit.component';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { DialogAddComponent } from './dialog-add/dialog-add.component';
 
 @NgModule({
-    declarations: [CashOutComponent, DialogEditComponent, BottomSheetOverviewExampleSheet],
+    declarations: [CashOutComponent, DialogEditComponent, BottomSheetOverviewExampleSheet, DialogAddComponent],
     imports: [
         CommonModule,
         CashOutRoutingModule,

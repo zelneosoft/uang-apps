@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/service/api.service';
 import { Location } from '@angular/common';
 import { DialogEditComponent } from '../dialog-edit/dialog-edit.component';
+import { DialogAddComponent } from '../dialog-add/dialog-add.component';
 
 @Component({
     selector: 'app-cash-out',
@@ -45,6 +46,18 @@ export class CashOutComponent implements OnInit {
                 }
                 this.loading = false;
                 this.dataTransaction = data['data'];
+            }
+        });
+    }
+
+    openDialogAdd() {
+        const dialogRef = this.dialog.open(DialogAddComponent, {
+            width: '400px'
+        });
+        dialogRef.afterClosed().subscribe(arr => {
+            if (arr == true) {
+                this.loading = true;
+                this.ngOnInit();
             }
         });
     }

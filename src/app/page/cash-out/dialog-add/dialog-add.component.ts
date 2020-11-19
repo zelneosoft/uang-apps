@@ -29,7 +29,7 @@ export class DialogAddComponent implements OnInit {
         try {
             await this.rest.get_category().subscribe((data) => {
                 this.loading = false;
-                this.dataCategory = data['in'];
+                this.dataCategory = data['out'];
             })
         } catch (error) {
             console.log(error);
@@ -54,7 +54,7 @@ export class DialogAddComponent implements OnInit {
             });
         } else {
             try {
-                await this.rest.save_transaction_in({
+                await this.rest.save_transaction_out({
                     idCategory: this.kategori,
                     desc: this.desc,
                     amt: this.nominal

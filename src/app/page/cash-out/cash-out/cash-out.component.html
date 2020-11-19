@@ -48,7 +48,7 @@
         <button mat-icon-button routerLink="/home" class="icon-home"><mat-icon>home</mat-icon></button>
         <button mat-icon-button routerLink="/profile" class="icon-account"><mat-icon>person_outline</mat-icon></button>
 
-        <div class="circle" matRipple>
+        <div class="circle" (click)="openDialogAdd()" matRipple>
             <i class="plus-icon"><mat-icon>add</mat-icon></i>
         </div>
     </div>
