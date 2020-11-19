@@ -57,8 +57,10 @@ export class HomeComponent implements OnInit {
             data: {},
         });
         dialogRef.afterClosed().subscribe(arr => {
-            this.loading = true;
-            this.ngOnInit();
+            if (arr == true) {
+                this.loading = true;
+                this.ngOnInit();
+            }
         });
     }
 

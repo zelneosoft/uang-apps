@@ -1,3 +1,6 @@
+<div class="loading" *ngIf="loading">
+    <mat-spinner style="margin:0 auto;"  mode="indeterminate"></mat-spinner>
+</div>
 <mat-form-field class="form-field">
     <mat-label>Pilih tipe</mat-label>
     <mat-select [(ngModel)]="tipe" name="tipe" class="mat-select" (selectionChange)="getCategory($event.value)">

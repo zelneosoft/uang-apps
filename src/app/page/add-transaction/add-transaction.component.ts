@@ -10,6 +10,7 @@ import { ApiService } from 'src/app/service/api.service';
 })
 export class AddTransactionComponent implements OnInit {
 
+    loading = true;
     tipe;
     kategori;
     nominal;
@@ -24,12 +25,15 @@ export class AddTransactionComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.result = 0
+        this.result = 0;
+        this.loading = false;
     }
 
     async getCategory(arr){
+        this.loading = true;
         try {
             await this.rest.get_category().subscribe((data) => {
+                this.loading = false;
                 if (arr == 0) {
                     this.dataCategory = data['in'];
                 } else {
@@ -68,7 +72,7 @@ export class AddTransactionComponent implements OnInit {
                 } catch (error) {
                     console.log(error);
                 }
-                this.dialogRef.close();
+                this.dialogRef.close(true);
             } else {
                 try {
                     await this.rest.save_transaction_out({
@@ -79,7 +83,7 @@ export class AddTransactionComponent implements OnInit {
                 } catch (error) {
                     console.log(error);
                 }
-                this.dialogRef.close();
+                this.dialogRef.close(true);
             }
         }
     }
