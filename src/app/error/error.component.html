@@ -1,8 +1,11 @@
+
 <div *ngIf="this.status <= 0">
     <table width="100%">
         <tr>
             <td align="center">
-                <p>Down for Maintanance. Please check back soon.</p>
+                <mat-icon style="color: #f44336;font-size: 48px; width: 48px; height: 48px; line-height: 48px;">error_outline</mat-icon>
+                <br><b>Server kami sedang padat merayap nih.</b>
+                <br><span style="font-size: 12px; color: grey;">Tenang, kami akan segera memperbaikinya. Silahkan kembali lagi nanti :)</span>
             </td>
         </tr>
         <tr>
@@ -12,12 +15,15 @@
         </tr>
     </table>
 </div>
+
 <div *ngIf="this.status > 0">
     <div *ngIf="reason == 'Unauthorized'">
         <table width="100%">
             <tr>
                 <td align="center">
-                    <p>Your session is expired. Please re-login</p>
+                    <mat-icon style="color: #f44336;font-size: 48px; width: 48px; height: 48px; line-height: 48px;">error_outline</mat-icon>
+                    <br><b>Sesi telah habis.</b>
+                    <br><span style="font-size: 12px; color: grey;">Silahkan login kembali untuk menggunakan aplikasi.</span>
                 </td>
             </tr>
             <tr>
@@ -31,7 +37,9 @@
         <table width="100%">
             <tr>
                 <td align="center">
-                    <p>Username or Password Failed. Please try again.</p>
+                    <mat-icon style="color: #f44336;font-size: 48px; width: 48px; height: 48px; line-height: 48px;">error_outline</mat-icon>
+                    <br><b>Sesi telah habis.</b>
+                    <br><span style="font-size: 12px; color: grey;">Silahkan login kembali untuk menggunakan aplikasi.</span>
                 </td>
             </tr>
             <tr>

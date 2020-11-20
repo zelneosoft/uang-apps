@@ -18,23 +18,23 @@ export class ErrorComponent implements OnInit {
         private router : Router,
         public dialogRef: MatDialogRef<ErrorComponent>
     ) { 
+        // console.log(data)
         switch (data["status"]) {
             case 500:
                 this.status = data["status"];
-                // console.log(this.status);
                 this.logout();
                 window.location.replace('/');
                 break;
             
             default:
                 this.status = data["status"];
-                // console.log(this.status);
                 break;
         }
         this.reason = data["reason"];
     }
 
-    ngOnInit(): void {
+    ngOnInit() {
+        console.log(this.status)
     }
 
     closedDialog(): void {
@@ -43,17 +43,19 @@ export class ErrorComponent implements OnInit {
 
     closeFailedLogin(): void {
         this.dialogRef.close();
+        localStorage.clear();
+        window.location.replace('/');
     }
 
     closeExpired(): void {
         this.dialogRef.close();
         localStorage.clear();
-        window.location.replace('/login');
+        window.location.replace('/');
     }
 
     logout(){
         localStorage.clear();
-        window.location.replace('/login');
+        window.location.replace('/');
     }
 
 }

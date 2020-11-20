@@ -49,7 +49,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
                                                 reason: error && error.message ? error.message : error.statusText,
                                                 status: error.status
                                         }; 
-                                    break; 
+                                break; 
                                 default:
                                         switch (error.error.message.errors) {                                            
                                             case undefined:

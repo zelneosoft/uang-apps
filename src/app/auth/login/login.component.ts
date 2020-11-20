@@ -86,6 +86,8 @@ export class LoginComponent implements OnInit {
                         this.data.getProfile();
                     });
                 }
+            },(err)=>{
+                this.loading = false;
             });
         } catch (error) {
             console.log(error);
