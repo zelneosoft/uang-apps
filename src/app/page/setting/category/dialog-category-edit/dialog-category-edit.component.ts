@@ -29,7 +29,14 @@ export class DialogCategoryEditComponent implements OnInit {
         try {
             await this.rest.delete_category({
                 id: this.id
-            }).subscribe(async (data)=>{}); 
+            }).subscribe(async (data)=>{
+                if (data['success']) {
+                    this._snackBar.open('Kategori berhasil dihapus', 'Oke', {
+                        duration: 4000,
+                        panelClass: ['mat-snackbar', 'mat-primary']
+                    });
+                }
+            }); 
         } catch (error) {
             console.log(error);
         }
@@ -47,7 +54,14 @@ export class DialogCategoryEditComponent implements OnInit {
                 await this.rest.update_category({
                     id: this.id,
                     desc: this.nama
-                }).subscribe(async (data)=>{}); 
+                }).subscribe(async (data)=>{
+                    if (data['success']) {
+                        this._snackBar.open('Kategori berhasil diperbarui', 'Oke', {
+                            duration: 4000,
+                            panelClass: ['mat-snackbar', 'mat-primary']
+                        });
+                    }
+                }); 
             } catch (error) {
                 console.log(error);
             }
