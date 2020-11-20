@@ -12,7 +12,18 @@
 }
 
 .btn-primary {
+    width: 100%;
+    display: block;
     text-align: center;
     background-color: #2492F4;
     color: white;
+}
+
+.btn-danger {
+    width: 100%;
+    display: block;
+    text-align: center;
+    background-color: transparent;
+    color: #f44336;
+    border: 1px solid #f44336;
 }

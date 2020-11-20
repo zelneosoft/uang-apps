@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
   urlApi: 'https://api.dazelpro.com',
-  versiApp : '1.0.2'
+  versiApp : '1.0.3 Beta'
 };

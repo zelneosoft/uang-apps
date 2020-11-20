@@ -61,4 +61,11 @@ export class ProfileComponent implements OnInit {
         }
     }
 
+    delete() {
+        this._snackBar.open('Fitur ini belum tersedia', 'Oke', {
+            duration: 2000,
+            panelClass: ['mat-snackbar', 'mat-primary']
+        });
+    }
+
 }
