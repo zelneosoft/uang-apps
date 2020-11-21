@@ -1,0 +1,16 @@
+<div>
+    <table width="100%">
+        <tr>
+            <td align="center">
+                <mat-icon style="color: #f44336;font-size: 48px; width: 48px; height: 48px; line-height: 48px;">error_outline</mat-icon>
+                <br><b>Tindakan masal</b>
+                <br><span style="font-size: 12px; color: grey;">Apa kamu yakin ingin menghapus <b>semua</b> data transaksi? <br>Data akan dihapus secara permanen.</span>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <button [attr.tabindex]="-1" mat-flat-button color="warn" (click)="delete()" class="btn-block">Yakin</button>
+            </td>
+        </tr>
+    </table>
+</div>
