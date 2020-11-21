@@ -91,7 +91,7 @@ export class CashOutComponent implements OnInit {
     }
 
     async delete() {
-        await this.rest.delete_transaction_in_all().subscribe((data) => {
+        await this.rest.delete_transaction_out_all().subscribe((data) => {
             if (data['success']){
                 this.ngOnInit();
                 this._snackBar.open('Berhasil reset transaksi', 'Oke', {
