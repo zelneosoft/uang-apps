@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RouterOutlet } from '@angular/router';
 import { SwUpdate } from '@angular/service-worker';
+import { environment } from 'src/environments/environment';
 import { UserService } from './service/user.service';
 
 @Component({
@@ -19,17 +20,12 @@ export class AppComponent {
         private _snackBar: MatSnackBar,
     ) {
         this.data.getProfile();
-        swUpdate.available.subscribe(event => {
+        this.swUpdate.available.subscribe(event => {
             const snack = this._snackBar.open("Versi terbaru telah tersedia","Update");
             snack.onAction().subscribe(()=>{
                 window.location.reload();
             })
         });
-    }
-
-    prepareRoute(outlet: RouterOutlet) {
-        return outlet && 
-          outlet.activatedRouteData && 
-          outlet.activatedRouteData['animationState'];
+        console.log(environment.versiApp);
     }
 }
