@@ -7,9 +7,10 @@ import { DialogEditComponent } from './dialog-edit/dialog-edit.component';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { DialogAddComponent } from './dialog-add/dialog-add.component';
+import { DialogConfirmDeleteAllComponent } from './dialog-confirm-delete-all/dialog-confirm-delete-all.component';
 
 @NgModule({
-    declarations: [CashOutComponent, DialogEditComponent, BottomSheetOverviewExampleSheet, DialogAddComponent],
+    declarations: [CashOutComponent, DialogEditComponent, BottomSheetOverviewExampleSheet, DialogAddComponent, DialogConfirmDeleteAllComponent],
     imports: [
         CommonModule,
         CashOutRoutingModule,

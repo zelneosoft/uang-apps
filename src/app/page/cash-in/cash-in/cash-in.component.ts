@@ -26,7 +26,8 @@ export class CashInComponent implements OnInit {
         public dialog: MatDialog,
         private rest: ApiService,
         private _location: Location,
-        private _bottomSheet: MatBottomSheet,private _snackBar: MatSnackBar,
+        private _bottomSheet: MatBottomSheet,
+        private _snackBar: MatSnackBar,
     ) { }
 
     async ngOnInit() {
