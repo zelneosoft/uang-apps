@@ -6,6 +6,7 @@ import { MatBottomSheet, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angul
 import { DialogEditComponent } from '../dialog-edit/dialog-edit.component';
 import { DialogAddComponent } from '../dialog-add/dialog-add.component';
 import { DialogConfirmDeleteAllComponent } from '../dialog-confirm-delete-all/dialog-confirm-delete-all.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-cash-in',
@@ -25,7 +26,7 @@ export class CashInComponent implements OnInit {
         public dialog: MatDialog,
         private rest: ApiService,
         private _location: Location,
-        private _bottomSheet: MatBottomSheet
+        private _bottomSheet: MatBottomSheet,private _snackBar: MatSnackBar,
     ) { }
 
     async ngOnInit() {
@@ -82,7 +83,19 @@ export class CashInComponent implements OnInit {
         dialogRef.afterClosed().subscribe(arr => {
             if (arr == true) {
                 this.loading = true;
-                //
+                this.delete();
+            }
+        });
+    }
+
+    async delete() {
+        await this.rest.delete_transaction_in_all().subscribe((data) => {
+            if (data['success']){
+                this.ngOnInit();
+                this._snackBar.open('Berhasil reset transaksi', 'Oke', {
+                    duration: 2000,
+                    panelClass: ['mat-snackbar', 'mat-primary']
+                });
             }
         });
     }

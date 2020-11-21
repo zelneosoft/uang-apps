@@ -41,6 +41,12 @@
     <div class="pagination">
         <pagination-controls (pageChange)="p = $event" previousLabel="Sebelumnya" nextLabel="Selanjutnya" responsive="true"></pagination-controls>
     </div>
+
+    <div style="text-align: center;" class="mt-15">
+        <button mat-button (click)="confirmDelete()" class="btn-danger">
+            Hapus Semua Transaksi
+        </button>
+    </div>
 </div>
 
 <div class="wrapper">

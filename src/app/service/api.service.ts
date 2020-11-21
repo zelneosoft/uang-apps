@@ -78,8 +78,16 @@ export class ApiService {
         return this.http.post(`${this.link_url()}/uangku-transaction/delete-in`,data ,{ headers: this.getHeaders() });
     }
 
+    delete_transaction_in_all() {
+        return this.http.get(`${this.link_url()}/uangku-transaction/delete-all-in`, { headers: this.getHeaders() });
+    }
+
     delete_transaction_out(data) {
         return this.http.post(`${this.link_url()}/uangku-transaction/delete-out`,data ,{ headers: this.getHeaders() });
+    }
+
+    delete_transaction_out_all() {
+        return this.http.get(`${this.link_url()}/uangku-transaction/delete-all-out`, { headers: this.getHeaders() });
     }
 
     get_data_report(param) {
