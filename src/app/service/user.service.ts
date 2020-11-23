@@ -17,6 +17,7 @@ export class UserService {
     userBio   = '';
     userPhone   = '';
     userPhoto   = '';
+    userPin;
     token:any;
 
     constructor(
@@ -46,10 +47,7 @@ export class UserService {
                     this.userBio = this.user['userBio'];
                     this.userPhone = this.user['userPhone'];
                     this.userPhoto = this.user['userPhotoUrl'];
-                    // this.nameUser = this.user['user_name'].replace(/\w\S*/g,function(txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
-                    // this.keyUser = this.user['user_name'].toUpperCase().slice(0,1);
-                    // this.emailUser = this.user['user_email'];
-                    // this.idUser = this.user['user_id'];
+                    this.userPin = this.user['userPin'];
                 }
             });
         }

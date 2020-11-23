@@ -19,7 +19,7 @@ export class GrafikComponent implements OnInit {
     type;
     data;
     option = {
-        colors: ['#2492F4', '#f44336'],
+        colors: [ '#f44336', '#2492F4'],
         is3D: true,
         'backgroundColor': 'transparent',
         fontName: 'Quicksand',
@@ -76,8 +76,8 @@ export class GrafikComponent implements OnInit {
                 this.rinciOut = data['data'][5];
                 this.type = 'PieChart';
                 this.data = [
-                    ['Pemasukan', data['data'][0][0]['totalIn']],
-                    ['Pengeluaran', data['data'][1][0]['totalOut']]
+                    ['Pengeluaran', data['data'][1][0]['totalOut']],
+                    ['Pemasukan', data['data'][0][0]['totalIn']]
                 ];
             }
         });

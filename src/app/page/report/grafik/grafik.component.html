@@ -29,17 +29,17 @@
 <table width="100%" border="0">
     <tr>
         <td width="50%">
-            <div class="card-red">
-                <span style="font-size: 12px;">Pengeluaran</span><br>
-                <span *ngIf="totalOut" style="font-size: 18px; font-weight: bold;">Rp. {{totalOut.toLocaleString(['id'])}}</span>
-                <span *ngIf="!totalOut" style="font-size: 18px; font-weight: bold;">Rp. 0</span>
-            </div>
-        </td>
-        <td width="50%">
             <div class="card-blue">
                 <span style="font-size: 12px;">Pemasukan</span><br>
                 <span *ngIf="totalIn" style="font-size: 18px; font-weight: bold;">Rp. {{totalIn.toLocaleString(['id'])}}</span>
                 <span *ngIf="!totalIn" style="font-size: 18px; font-weight: bold;">Rp. 0</span>
+            </div>
+        </td>
+        <td width="50%">
+            <div class="card-red">
+                <span style="font-size: 12px;">Pengeluaran</span><br>
+                <span *ngIf="totalOut" style="font-size: 18px; font-weight: bold;">Rp. {{totalOut.toLocaleString(['id'])}}</span>
+                <span *ngIf="!totalOut" style="font-size: 18px; font-weight: bold;">Rp. 0</span>
             </div>
         </td>
     </tr>

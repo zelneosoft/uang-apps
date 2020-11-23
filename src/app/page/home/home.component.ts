@@ -26,12 +26,9 @@ export class HomeComponent implements OnInit {
     async ngOnInit() {
         await this.rest.get_data_home().subscribe((data) => {
             if (data['success']){
-                // console.log(data['data'][0][0]['totalSaldo'])
                 if (data['data'][0][0]['totalSaldo'] === null || data['data'][0][0]['totalSaldo'] === 0){
-                    this.loading = false;
                     this.noData = false;
                 } else {
-                    this.loading = false;
                     this.noData = true;
                     if (data['data'][1].length === 0){
                         this.inData = false
@@ -47,14 +44,14 @@ export class HomeComponent implements OnInit {
                     this.transactionIn = data['data'][1];
                     this.transactionOut = data['data'][2];
                 }
+                this.loading = false;
             }
         });
     }
 
     openDialogAdd() {
         const dialogRef = this.dialog.open(AddTransactionComponent, {
-            width: '400px',
-            data: {},
+            width: '400px'
         });
         dialogRef.afterClosed().subscribe(arr => {
             if (arr == true) {

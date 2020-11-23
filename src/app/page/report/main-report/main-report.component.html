@@ -35,7 +35,7 @@
     <table width="100%" border="0">
         <tr>
             <td width="50%">
-                <div class="card-green" matRipple routerLink="/cash-in">
+                <div class="card-blue" matRipple routerLink="/cash-in">
                     <span style="font-size: 12px;">Pemasukan</span><br>
                     <span *ngIf="totalIn" style="font-size: 18px; font-weight: bold;">Rp. {{totalIn.toLocaleString(['id'])}}</span>
                     <span *ngIf="!totalIn" style="font-size: 18px; font-weight: bold;">Rp. 0</span>
@@ -94,7 +94,7 @@
                     <span style="font-size: 16px; font-weight: bold;">Laporan Grafik</span>
                 </td>
                 <td align="right" valign="middle">
-                    <mat-icon color="primary">pie_chart</mat-icon>
+                    <mat-icon style="color: #2492F4;">pie_chart</mat-icon>
                 </td>
             </tr>
         </table>
@@ -106,7 +106,7 @@
                     <span style="font-size: 16px; font-weight: bold;">Unduh Laporan</span>
                 </td>
                 <td align="right" valign="middle">
-                    <mat-icon color="primary">cloud_download</mat-icon>
+                    <mat-icon style="color: #2492F4;">cloud_download</mat-icon>
                 </td>
             </tr>
         </table>

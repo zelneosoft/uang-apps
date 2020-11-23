@@ -18,6 +18,10 @@ button,p,
     font-family: 'Quicksand', sans-serif !important;
 }
 
+.mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #2492F4;
+}
+
 .loading {
     position: fixed;
     z-index: 999;
