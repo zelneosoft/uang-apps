@@ -49,6 +49,11 @@ export class HomeComponent implements OnInit {
         });
     }
 
+    refresh() {
+        this.loading = true;
+        this.ngOnInit()
+    }
+
     openDialogAdd() {
         const dialogRef = this.dialog.open(AddTransactionComponent, {
             width: '400px'

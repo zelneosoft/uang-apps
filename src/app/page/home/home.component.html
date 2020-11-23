@@ -3,8 +3,22 @@
 </div>
 
 <div class="card mt-10">
-    <span style="color: grey;">Uang kamu saat ini</span>
-    <h1 style="line-height: 0;">Rp. {{totalSaldo.toLocaleString(['id'])}}</h1>
+    <table width="100%" border="0">
+        <tr>
+            <td>
+                <span style="color: grey;">Uang kamu saat ini</span>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td valign="middle">
+                <h1 style="line-height: -0;">Rp. {{totalSaldo.toLocaleString(['id'])}}</h1>
+            </td>
+            <td align="right" rowspan="2" valign="middle">
+                <button (click)="refresh()" mat-icon-button><mat-icon style="color:#2492F4;">refresh</mat-icon></button>
+            </td>
+        </tr>
+    </table>
 </div>
 <div *ngIf="!noData" class="mt-50">
     <p style="text-align: center;">😔 <br>Belum ada histori catatan keuangan</p>
