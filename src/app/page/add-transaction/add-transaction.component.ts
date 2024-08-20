@@ -56,7 +56,7 @@ export class AddTransactionComponent implements OnInit {
     }
 
     async save() {
-        if (this.tipe == "" || this.kategori == "" || this.desc == "" || this.nominal == "" || this.nominal == null || this.nominal == 0) {
+        if (this.tipe == "" || this.kategori == "" || this.nominal == "" || this.nominal == null || this.nominal == 0) {
             this._snackBar.open('Kolom isian harus terisi semua', 'Oke', {
                 duration: 4000,
                 panelClass: ['mat-snackbar', 'mat-primary']

@@ -52,7 +52,8 @@
 <table width="100%" border="0" class="mt-10">
     <tr *ngFor="let item of this.rinciIn">
         <td align="left">
-            <label style="font-size: 14px;">{{item.inDescription}}</label>
+            <label style="font-size: 14px; font-weight: bold;">{{item.categoryDescription}}</label><br>
+            <label style="font-size: 14px;">{{item.inDescription || " -"}}</label>
         </td>
         <td align="right">
             <label style="font-size: 14px; font-weight: 500;">{{item.total.toLocaleString(['id'])}}</label>
@@ -71,7 +72,8 @@
 <table width="100%" border="0" class="mt-10">
     <tr *ngFor="let item of this.rinciOut">
         <td align="left">
-            <label style="font-size: 14px;">{{item.outDescription}}</label>
+            <label style="font-size: 14px; font-weight: bold;">{{item.categoryDescription}}</label> <br>
+            <label style="font-size: 14px;">{{item.outDescription || "-"}}</label>
         </td>
         <td align="right">
             <label style="font-size: 14px; font-weight: 500;">{{item.total.toLocaleString(['id'])}}</label>
