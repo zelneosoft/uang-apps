@@ -13,7 +13,7 @@ export class AddTransactionComponent implements OnInit {
     loading = true;
     tipe;
     kategori;
-    nominal;
+    nominal: string = '';
     desc;
     result;
     dataCategory: any;
@@ -29,7 +29,7 @@ export class AddTransactionComponent implements OnInit {
         this.loading = false;
     }
 
-    async getCategory(arr){
+    async getCategory(arr) {
         this.loading = true;
         try {
             await this.rest.get_category().subscribe((data) => {
@@ -45,18 +45,31 @@ export class AddTransactionComponent implements OnInit {
         }
     }
 
-    separatorProcess(): void {
-        if (this.nominal == null) {
-            this.nominal = 0
-        } else {
-            this.nominal = this.nominal
+    // separatorProcess(): void {
+    //     if (this.nominal == null) {
+    //         this.nominal = 0
+    //     } else {
+    //         this.nominal = this.nominal
+    //     }
+    //     let numberVal = parseInt(this.nominal).toLocaleString();
+    //     this.result = numberVal;
+    // }
+
+    onInputChange(event: any): void {
+        const input = event.target.value.replace(/[^0-9]/g, '');
+        this.nominal = input;
+        event.target.value = this.formatCurrency(input);
+    }
+
+    formatCurrency(value: string): string {
+        if (!value) {
+            return '';
         }
-        let numberVal = parseInt(this.nominal).toLocaleString();
-        this.result = numberVal;
+        return new Intl.NumberFormat('id-ID').format(Number(value));
     }
 
     async save() {
-        if (this.tipe == "" || this.kategori == "" || this.nominal == "" || this.nominal == null || this.nominal == 0) {
+        if (this.tipe == "" || this.kategori == "" || this.nominal == "" || this.nominal == null || this.nominal == "") {
             this._snackBar.open('Kolom isian harus terisi semua', 'Oke', {
                 duration: 4000,
                 panelClass: ['mat-snackbar', 'mat-primary']
@@ -68,7 +81,7 @@ export class AddTransactionComponent implements OnInit {
                         idCategory: this.kategori,
                         desc: this.desc,
                         amt: this.nominal
-                    }).subscribe(async (data)=>{}); 
+                    }).subscribe(async (data) => { });
                 } catch (error) {
                     console.log(error);
                 }
@@ -77,9 +90,9 @@ export class AddTransactionComponent implements OnInit {
                 try {
                     await this.rest.save_transaction_out({
                         idCategory: this.kategori,
-                        desc: this.desc,                    
+                        desc: this.desc,
                         amt: this.nominal
-                    }).subscribe(async (data)=>{}); 
+                    }).subscribe(async (data) => { });
                 } catch (error) {
                     console.log(error);
                 }

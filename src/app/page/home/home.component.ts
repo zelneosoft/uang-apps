@@ -26,8 +26,9 @@ export class HomeComponent implements OnInit {
     async ngOnInit() {
         await this.rest.get_data_home().subscribe((data) => {
             if (data['success']){
-                if (data['data'][0][0]['totalSaldo'] === null || data['data'][0][0]['totalSaldo'] === 0){
-                    this.noData = false;
+                console.log(data['data'][0][0]['totalSaldo'])
+                if (data['data'][0][0]['totalSaldo'] === null){
+                    // this.noData = false;
                 } else {
                     this.noData = true;
                     if (data['data'][1].length === 0){
@@ -39,6 +40,9 @@ export class HomeComponent implements OnInit {
                         this.outData = false
                     } else {
                         this.outData = true
+                    }
+                    if (!this.outData && !this.inData) {
+                        this.noData = false
                     }
                     this.totalSaldo = data['data'][0][0]['totalSaldo'];
                     this.transactionIn = data['data'][1];
